@@ -67,10 +67,12 @@ Additional visuals and effects
 
   component {
     FontSize 20
+    MaximumWidth 100
   }
 
   note {
     FontSize 14
+    MaximumWidth 350
   }
 </style>
 

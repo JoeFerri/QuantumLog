@@ -59,12 +59,12 @@ package qlFutureFeatures {
 }
 
 
-ServerAPI -down[hidden]-> ClientAPI
-ClientAPI -down[hidden]-> FreightJobBoard
-FreightJobBoard -down[hidden]-> ArmedEscortRequestsBoard
-ArmedEscortRequestsBoard -down[hidden]-> ArmedEscortOffersBoard
-ArmedEscortOffersBoard -down[hidden]-> RouteFinder
-RouteFinder -down[hidden]-> SessionSharingBoard
+ServerAPI -[hidden]-> ClientAPI
+ClientAPI -[hidden]-> FreightJobBoard
+FreightJobBoard -[hidden]-> ArmedEscortRequestsBoard
+ArmedEscortRequestsBoard -[hidden]-> ArmedEscortOffersBoard
+ArmedEscortOffersBoard -[hidden]-> RouteFinder
+RouteFinder -[hidden]-> SessionSharingBoard
 
 
 @enduml
