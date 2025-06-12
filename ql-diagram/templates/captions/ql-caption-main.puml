@@ -1,1 +1,1 @@
-caption $file
+caption %filename()

@@ -11,13 +11,11 @@
 '/
 
 
-@startuml "ql-components_future_features"
-!$file = "ql-components_future_features"
+@startuml ql-components_future_features
 !$title = "Components Future Features"
 !$author = "Giuseppe Ferri"
 
 !include templates/ql-template-main.puml
-
 
 
 
