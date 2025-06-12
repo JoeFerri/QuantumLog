@@ -1,0 +1,78 @@
+/'
+Typography
+    Property                      Description
+    FontName                      Sets the font family for text elements.
+    FontColor                     Sets the color of the text.
+    FontSize                      Specifies the size of the text.
+    FontStyle                     Defines the text style (e.g., bold, italic, normal).
+
+Color and background
+    Property                      Description
+    BackGroundColor               Sets the background color of an element.
+    HyperLinkColor                Sets the color used for hyperlinks.
+
+Borders and corners
+    Property                      Description
+    RoundCorner                   Sets the radius for rounding the corners of elements.
+    DiagonalCorner                Applies a diagonal cut effect to element corners.
+    LineColor                     Specifies the color of lines or borders.
+    LineThickness                 Sets the thickness of lines or borders.
+    LineStyle                     Defines the line style (solid, dashed, dotted, etc.).
+
+Spacing and sizing
+    Property                      Description
+    Padding                       Sets the internal spacing within an element.
+    Margin                        Defines the external spacing around an element.
+    MaximumWidth                  Specifies the maximum width an element can occupy.
+
+Additional visuals and effects
+    Property                      Description
+    Shadowing                     Adds a shadow effect by specifying a numeric value for the shadow distance.
+    HyperlinkUnderlineStyle       Specifies the underline style for hyperlinks.
+    HyperlinkUnderlineThickness   Specifies the thickness of the hyperlink underline.
+    HorizontalAlignment           Aligns content horizontally (left, center, or right). 
+'/
+
+
+
+<style>
+  title {
+    HorizontalAlignment right
+    FontSize 36
+    Margin 0 0 40 0
+  }
+
+  header {
+    HorizontalAlignment center
+    FontSize 14
+    Margin 10
+  }
+
+  footer {
+    HorizontalAlignment center
+    FontSize 14
+    Margin 60 0 10 0
+  }
+
+  caption {
+    FontSize 16
+  }
+
+  legend {
+  }
+
+  package {
+    FontSize 20
+  }
+
+  component {
+    FontSize 20
+  }
+
+  note {
+    FontSize 14
+  }
+</style>
+
+
+skinparam dpi 100

@@ -1,0 +1,9 @@
+note
+ql-note.md
+/vendor
+/testing
+temp
+elab
+.vscode/
+backup/
+lib/

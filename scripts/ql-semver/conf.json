@@ -1,0 +1,14 @@
+{
+  "ql-semver_name": "ql-semver.puml",
+  "ql-diagram_path": "../../ql-diagram",
+  "ql-lpi_name": "QuantumLog.lpi",
+  "ql-lpi_path": "../../project",
+  "ql-version_name": "version.json",
+  "ql-version_path": "../..",
+  "authors": [
+    "Giuseppe Ferri <jfinfoit@gmail.com>"
+  ],
+  "license": "MIT",
+  "repository": "https://github.com/JoeFerri/QuantumLog",
+  "pre-release": "alpha"
+}

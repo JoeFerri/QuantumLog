@@ -1,0 +1,72 @@
+/'
+ * QuantumLog
+ * License: MIT
+ * Source: https://github.com/JoeFerri/QuantumLog
+ * Copyright (c) 2025 Giuseppe Ferri <jfinfoit@gmail.com>
+'/
+
+/'
+ * The components described could be designed and developed in the future.
+ * They are not necessary for the completion of the project nor is their development certain.
+'/
+
+
+@startuml "ql-components_future_features"
+!$file = "ql-components_future_features"
+!$title = "Components Future Features"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.puml
+
+
+
+
+package qlFutureFeatures {
+  component [ServerAPI]
+  note right of [ServerAPI]
+    A central online process/Thread Server stays listening for client calls from users.
+    It offers APIs to communicate with the central database.
+  end note
+
+  component [ClientAPI]
+  note right of [ClientAPI]
+    API for local communication of Client software, i.e.,
+    API for controlled modification (modding) of the program installed locally on the user's machine.
+  end note
+
+  component [FreightJobBoard]
+  note right of [FreightJobBoard]
+    GUI for supply/demand between couriers and merchants.
+  end note
+
+  component [ArmedEscortRequestsBoard]
+  note right of [ArmedEscortRequestsBoard]
+    GUI for requesting armed escorts from couriers/traders.
+  end note
+
+  component [ArmedEscortOffersBoard]
+  note right of [ArmedEscortOffersBoard]
+    GUI for offering armed escorts by mercenaries to couriers/traders.
+  end note
+
+  component [RouteFinder]
+  note right of [RouteFinder]
+    Find an optimized run cycle from the defined strategy.
+  end note
+
+  component [SessionSharingBoard]
+  note right of [SessionSharingBoard]
+    GUI for multiplayer management.
+  end note
+}
+
+
+ServerAPI -down[hidden]-> ClientAPI
+ClientAPI -down[hidden]-> FreightJobBoard
+FreightJobBoard -down[hidden]-> ArmedEscortRequestsBoard
+ArmedEscortRequestsBoard -down[hidden]-> ArmedEscortOffersBoard
+ArmedEscortOffersBoard -down[hidden]-> RouteFinder
+RouteFinder -down[hidden]-> SessionSharingBoard
+
+
+@enduml
