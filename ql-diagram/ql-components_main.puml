@@ -1,0 +1,166 @@
+/'
+ * QuantumLog
+ * License: MIT
+ * Source: https://github.com/JoeFerri/QuantumLog
+ * Copyright (c) 2025 Giuseppe Ferri <jfinfoit@gmail.com>
+'/
+
+/'
+ * Global view of the system.
+'/
+
+
+
+'''_______________________________________________
+@startuml ql-components_main
+!$title = "Components Main"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.puml
+!include templates/styles/ql-style-lib.puml
+
+skinparam linetype ortho
+left to right direction
+
+$setStyleIntCompArrow(tomenu, Orange)
+$setStyleIntCompArrow(toexport, Navy)
+
+rectangle r <<frame>> {
+
+  together {
+    component [MainBoard]
+
+    component [MainMenu]
+      interface IMainMenu1
+        MainMenu -u- IMainMenu1
+      interface IMainMenu2 <<tomenu>>
+        MainMenu -l- IMainMenu2 <<tomenu>>
+  }
+
+  component [PreferencesMenu]
+
+  component [StarMapDB]
+
+  component [TimeBoard]
+
+  component [StarMapCargoRouteBoard]
+
+  together {
+  component [FilteredContractsListBoard]
+
+  component [ContractsEntryBoard]
+    interface IContractsEntryBoard
+      ContractsEntryBoard -l- IContractsEntryBoard
+  }
+
+  component [StrategyBoard]
+
+  together {
+    component [CargoGrid]
+
+    component [ShipDetails]
+  }
+
+  together {
+    component [FileSystem]
+      interface IIO
+        FileSystem -l- IIO
+
+    component [DataExport]
+      interface IDataExport <<toexport>>
+        DataExport -u- IDataExport <<toexport>>
+  }
+
+}
+
+
+' relationships
+MainBoard                    ->     IMainMenu1
+DataExport                   ->     IIO
+FilteredContractsListBoard   ->     IContractsEntryBoard
+PreferencesMenu              ->     IDataExport           <<toexport>>
+StarMapDB                    ->     IDataExport           <<toexport>>
+FilteredContractsListBoard   ->     IDataExport           <<toexport>>
+StrategyBoard                ->     IDataExport           <<toexport>>
+PreferencesMenu              ->     IMainMenu2            <<tomenu>>
+StarMapDB                    ->     IMainMenu2            <<tomenu>>
+TimeBoard                    ->     IMainMenu2            <<tomenu>>
+StarMapCargoRouteBoard       ->     IMainMenu2            <<tomenu>>
+FilteredContractsListBoard   ->     IMainMenu2            <<tomenu>>
+ContractsEntryBoard          ->     IMainMenu2            <<tomenu>>
+StrategyBoard                ->     IMainMenu2            <<tomenu>>
+StrategyBoard                ...>   CargoGrid   : use
+StrategyBoard                ...>   ShipDetails : use
+
+@enduml
+
+'
+'
+'
+'''_______________________________________________
+@startuml ql-components_main_starmapdb
+!$title = "StarMapDB"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.puml
+
+rectangle r <<frame>> {
+
+  component [StarMapDB] {
+    port PStarMapDBOut1
+    port    PStarMapDBOut2
+
+      component [StarMapDBCommon]
+      component [StarMapDBPersonal]
+      StarMapDBCommon .. StarMapDBPersonal
+  }
+
+}
+
+@enduml
+
+
+'''_______________________________________________
+@startuml ql-components_main_timeboard
+!$title = "TimeBoard"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.puml
+
+rectangle r <<frame>> {
+
+  component [TimeBoard] {
+    port PTimeBoardOut
+
+      component [TimeStatistics]
+      component [TimeTab]
+  }
+
+}
+
+TimeStatistics -[hidden]-> TimeTab
+
+@enduml
+
+
+'''_______________________________________________
+@startuml ql-components_main_starmapcargorouteboard
+!$title = "StarMapCargoRouteBoard"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.puml
+
+rectangle r <<frame>> {
+
+  component [StarMapCargoRouteBoard] {
+    port PStarMapCargoRouteBoardOut
+
+      component [3DStarMapCargoRoute]
+      component [2DStarMapCargoRoute]
+  }
+
+}
+
+3DStarMapCargoRoute -[hidden]u-> 2DStarMapCargoRoute
+
+@enduml

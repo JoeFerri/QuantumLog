@@ -70,11 +70,24 @@ Additional visuals and effects
     MaximumWidth 100
   }
 
+  interface, port {
+    FontSize 1
+    FontColor #ffffff
+  }
+
   note {
     FontSize 14
     MaximumWidth 350
   }
+
+  .frame {
+    RoundCorner 50
+    LineColor #aaa
+    FontSize 1
+    FontColor #ffffff
+  }
 </style>
 
 
+skinparam InterfaceStereotypeFontColor #ffffff
 skinparam dpi 100

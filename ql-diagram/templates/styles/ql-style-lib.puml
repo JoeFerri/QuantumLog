@@ -1,0 +1,15 @@
+
+/'
+ * Set Style Interface Component Arrow.
+ * 
+ * @param $cl class
+ * @param $color color
+'/
+!procedure $setStyleIntCompArrow($cl, $color)
+  <style>
+    .$cl {
+        LineColor $color
+        BackgroundColor %darken($color, 10)
+    }
+  </style>
+!endprocedure
