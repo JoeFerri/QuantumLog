@@ -20,51 +20,51 @@
 
 
 package qlFutureFeatures {
-  component [ServerAPI]
-  note right of [ServerAPI]
+  [ServerAPI] as c01
+  note right of c01
     A central online process/Thread Server stays listening for client calls from users.
     It offers APIs to communicate with the central database.
   end note
 
-  component [ClientAPI]
-  note right of [ClientAPI]
+  [ClientAPI] as c02
+  note right of c02
     API for local communication of Client software, i.e.,
     API for controlled modification (modding) of the program installed locally on the user's machine.
   end note
 
-  component [FreightJobBoard]
-  note right of [FreightJobBoard]
+  [FreightJobBoard] as c03
+  note right of c03
     GUI for supply/demand between couriers and merchants.
   end note
 
-  component [ArmedEscortRequestsBoard]
-  note right of [ArmedEscortRequestsBoard]
+  [ArmedEscortRequestsBoard] as c04
+  note right of c04
     GUI for requesting armed escorts from couriers/traders.
   end note
 
-  component [ArmedEscortOffersBoard]
-  note right of [ArmedEscortOffersBoard]
+  [ArmedEscortOffersBoard] as c05
+  note right of c05
     GUI for offering armed escorts by mercenaries to couriers/traders.
   end note
 
-  component [RouteFinder]
-  note right of [RouteFinder]
+  [RouteFinder] as c06
+  note right of c06
     Find an optimized run cycle from the defined strategy.
   end note
 
-  component [SessionSharingBoard]
-  note right of [SessionSharingBoard]
+  [SessionSharingBoard] as c07
+  note right of c07
     GUI for multiplayer management.
   end note
 }
 
-
-ServerAPI -[hidden]-> ClientAPI
-ClientAPI -[hidden]-> FreightJobBoard
-FreightJobBoard -[hidden]-> ArmedEscortRequestsBoard
-ArmedEscortRequestsBoard -[hidden]-> ArmedEscortOffersBoard
-ArmedEscortOffersBoard -[hidden]-> RouteFinder
-RouteFinder -[hidden]-> SessionSharingBoard
+' top to bottom direction
+c01 -[hidden]-> c02
+c02 -[hidden]-> c03
+c03 -[hidden]-> c04
+c04 -[hidden]-> c05
+c05 -[hidden]-> c06
+c06 -[hidden]-> c07
 
 
 @enduml
