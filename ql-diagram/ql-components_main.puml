@@ -18,6 +18,7 @@
 
 !include templates/ql-template-main.puml
 !include templates/styles/ql-style-lib.puml
+!include templates/sprites/ql-sprites-lib.puml
 
 skinparam linetype ortho
 left to right direction
@@ -30,7 +31,7 @@ rectangle r <<frame>> {
   together {
     component [MainBoard]
 
-    component [MainMenu]
+    $qlInterfaceIconComponent(MainMenu, Orange) as MainMenu
       interface IMainMenu1
         MainMenu -u- IMainMenu1
       interface IMainMenu2 <<tomenu>>
@@ -66,7 +67,7 @@ rectangle r <<frame>> {
       interface IIO
         FileSystem -l- IIO
 
-    component [DataExport]
+    $qlInterfaceIconComponent(DataExport, Navy) as DataExport
       interface IDataExport <<toexport>>
         DataExport -u- IDataExport <<toexport>>
   }

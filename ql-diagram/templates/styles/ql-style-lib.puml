@@ -13,3 +13,20 @@
     }
   </style>
 !endprocedure
+
+
+/'
+ * QuantumLog Interface Icon Component.
+ *
+ * @example
+ *   $qlInterfaceIconComponent(K,red) as K {
+ *     component B
+ *   }
+ * 
+ * @param $name name
+ * @param $color color
+ * @param $scale scale
+'/
+!procedure $qlInterfaceIconComponent($name, $color, $scale=0.3)
+  component "<$qlInterfaceIcon{scale=$scale,color=$color}> $name"
+!endprocedure
