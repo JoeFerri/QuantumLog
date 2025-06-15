@@ -23,45 +23,70 @@
 skinparam linetype ortho
 left to right direction
 
-$setStyleIntCompArrow(tomenu, Orange)
-$setStyleIntCompArrow(toexport, Navy)
+$qlSetLineBkgrColor(tomenu, Orange)
+$qlSetLineBkgrColor(toexport, Navy)
 
 rectangle r <<frame>> {
 
+  '''_______________________________________________
   together {
     component [MainBoard]
+      !$note = "Main program GUI."
+      $qlNoteRel(nMainBoard, [MainBoard], ".", $note)
 
     $qlInterfaceIconComponent(MainMenu, Orange) as MainMenu
       interface IMainMenu1
-        MainMenu -u- IMainMenu1
+        MainMenu - IMainMenu1
       interface IMainMenu2 <<tomenu>>
-        MainMenu -l- IMainMenu2 <<tomenu>>
+        MainMenu - IMainMenu2 <<tomenu>>
   }
 
+  '''_______________________________________________
   component [PreferencesMenu]
 
+  '''_______________________________________________
   component [StarMapDB]
+    !$note = "Database of the game universe. Contains information and data on locations, labels, names, etc."
+    $qlNoteRel(nStarMapDB, [StarMapDB], "..", $note)
 
+  '''_______________________________________________
   component [TimeBoard]
+    !$note = "Tools for collecting and analyzing time data."
+    $qlNoteRel(nTimeBoard, [TimeBoard], "..", $note)
 
+  '''_______________________________________________
   component [StarMapCargoRouteBoard]
+    !$note = "GUI for displaying trade routes (possible, common or newly defined) in the game map."
+    $qlNoteRel(nStarMapCargoRouteBoard, [StarMapCargoRouteBoard], "..", $note)
 
+  '''_______________________________________________
   together {
-  component [FilteredContractsListBoard]
+    component [FilteredContractsListBoard]
+    !$note = "Filtered list of transport contracts. Filtering is done through the Strategy component."
+    $qlNoteRel(nFilteredContractsListBoard, [FilteredContractsListBoard], ".", $note)
 
-  component [ContractsEntryBoard]
-    interface IContractsEntryBoard
-      ContractsEntryBoard -l- IContractsEntryBoard
+    component [ContractsEntryBoard]
+    !$note = "GUI (form) for entering the selected transport contracts."
+    $qlNoteRel(nContractsEntryBoard, [ContractsEntryBoard], ".", $note)
+      interface IContractsEntryBoard
+        ContractsEntryBoard -l- IContractsEntryBoard
   }
 
-  component [StrategyBoard]
+  component [IncomeExpenseStatisticsBoard]
 
+  '''_______________________________________________
+  component [StrategyBoard]
+    !$note = "GUI for strategy definition. It is composed of subcomponents that specialize in choosing/defining options and limits to be applied to either the contract list, route search and calculation algorithms, or cargo arrangement."
+    $qlNoteRel(nStrategyBoard, [StrategyBoard], ".", $note)
+  
+  '''_______________________________________________
   together {
     component [CargoGrid]
 
     component [ShipDetails]
   }
 
+  '''_______________________________________________
   together {
     component [FileSystem]
       interface IIO
@@ -104,6 +129,7 @@ StrategyBoard                ...>   ShipDetails : use
 !$author = "Giuseppe Ferri"
 
 !include templates/ql-template-main.puml
+!include templates/styles/ql-style-lib.puml
 
 rectangle r <<frame>> {
 
@@ -112,10 +138,15 @@ rectangle r <<frame>> {
     port    PStarMapDBOut2
 
       component [StarMapDBCommon]
+        !$note = "Central online database of the game universe."
+        $qlNoteRel(nStarMapDBCommon, [StarMapDBCommon], ".l.", $note)
+
       component [StarMapDBPersonal]
+        !$note = "Local (user's personal) offline database of the game universe."
+        $qlNoteRel(nStarMapDBPersonal, [StarMapDBPersonal], ".l.", $note)
+
       StarMapDBCommon .. StarMapDBPersonal
   }
-
 }
 
 @enduml
@@ -127,6 +158,7 @@ rectangle r <<frame>> {
 !$author = "Giuseppe Ferri"
 
 !include templates/ql-template-main.puml
+!include templates/styles/ql-style-lib.puml
 
 rectangle r <<frame>> {
 
@@ -134,11 +166,17 @@ rectangle r <<frame>> {
     port PTimeBoardOut
 
       component [TimeStatistics]
+        !$note = "Shows time statistics of sessions, cycles, and single runs."
+        $qlNoteRel(nTimeStatistics, [TimeStatistics], ".l.", $note)
+
       component [TimeTab]
+        !$note = "GUI for capturing timestamps used in performance analysis of sessions, cycles, and single runs."
+        $qlNoteRel(nTimeTab, [TimeTab], ".l.", $note)
   }
 
 }
 
+' top to bottom direction
 TimeStatistics -[hidden]-> TimeTab
 
 @enduml
@@ -162,6 +200,7 @@ rectangle r <<frame>> {
 
 }
 
+' top to bottom direction
 3DStarMapCargoRoute -[hidden]u-> 2DStarMapCargoRoute
 
 @enduml

@@ -1,11 +1,32 @@
+/'
+ * QuantumLog
+ * License: MIT
+ * Source: https://github.com/JoeFerri/QuantumLog
+ * Copyright (c) 2025 Giuseppe Ferri <jfinfoit@gmail.com>
+'/
 
 /'
- * Set Style Interface Component Arrow.
+ * 
+'/
+
+!include ql-style-global.puml
+
+
+/'
+ * Set Line Background Color
+ *
+ * Associates the style class $cl with a color $color for the line and background.
+ *
+ * @example
+ *   $qlSetLineBkgrColor(tomenu, Orange)
+ *     component [MainBoard]
+ *       interface IMainMenu2 <<tomenu>>
+ *         MainMenu -l- IMainMenu2 <<tomenu>>
  * 
  * @param $cl class
  * @param $color color
 '/
-!procedure $setStyleIntCompArrow($cl, $color)
+!procedure $qlSetLineBkgrColor($cl, $color)
   <style>
     .$cl {
         LineColor $color
@@ -16,17 +37,68 @@
 
 
 /'
- * QuantumLog Interface Icon Component.
+ * Interface Icon Component
+ *
+ * Creates a component with an icon representing an interface.
  *
  * @example
  *   $qlInterfaceIconComponent(K,red) as K {
  *     component B
  *   }
  * 
- * @param $name name
- * @param $color color
- * @param $scale scale
+ * @param $name component name
+ * @param $color interface color
+ * @param $scale icon scale
 '/
 !procedure $qlInterfaceIconComponent($name, $color, $scale=0.3)
   component "<$qlInterfaceIcon{scale=$scale,color=$color}> $name"
+!endprocedure
+
+
+
+/'
+ * Note
+ *
+ * Creates a note element.
+ * The $show parameter determines the actual creation of the note.
+ * You can globally change the default behavior by modifying the $qlShowNotes() function.
+ *
+ * @see ql-style-global::$qlShowNotes()
+ *
+ * @param $name the name of the element note
+ * @param $note note
+ * @param $show True to show the note
+'/
+!procedure $qlNote($name, $note, $show=$qlShowNotes())
+  !if $show
+    note as $name
+      $note
+    end note
+  !endif
+!endprocedure
+
+
+
+/'
+ * Note Relative
+ *
+ * Creates a note element and connects it with its owner.
+ * The $show parameter determines the actual creation of the note.
+ * You can globally change the default behavior by modifying the $qlShowNotes() function.
+ *
+ * @see ql-style-global::$qlShowNotes()
+ *
+ * @param $name1 the name of the element note
+ * @param $name2 the name of the element owner
+ * @param $rel relation between the elements (".", "..", ".l.", ...)
+ * @param $note note
+ * @param $show True to show the note
+'/
+!procedure $qlNoteRel($name1, $name2, $rel, $note, $show=$qlShowNotes())
+  !if $show
+    note as $name1
+      $note
+    end note
+    $name1 $rel $name2
+  !endif
 !endprocedure

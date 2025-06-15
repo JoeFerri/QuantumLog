@@ -1,0 +1,21 @@
+/'
+ * QuantumLog
+ * License: MIT
+ * Source: https://github.com/JoeFerri/QuantumLog
+ * Copyright (c) 2025 Giuseppe Ferri <jfinfoit@gmail.com>
+'/
+
+/'
+ * 
+'/
+
+
+
+/'
+ * TODO: This function is an inelegant solution
+ * to the lack of global static variables in the PlantUML language. (@JoeFerri)
+'/
+!function $qlShowNotes()
+!return %true()
+'!return %false()
+!endfunction
