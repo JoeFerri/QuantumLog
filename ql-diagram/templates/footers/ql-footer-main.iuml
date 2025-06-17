@@ -1,0 +1,4 @@
+footer
+Author: $author
+<font size="11">rendered on %date("yyyy.MM.dd' at 'HH:mm")</font>
+end footer

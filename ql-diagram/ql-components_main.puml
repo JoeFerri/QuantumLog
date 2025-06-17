@@ -11,14 +11,17 @@
 
 
 
+'
+' Components Main
+'
 '''_______________________________________________
 @startuml ql-components_main
 !$title = "Components Main"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.puml
-!include templates/styles/ql-style-lib.puml
-!include templates/sprites/ql-sprites-lib.puml
+!include templates/ql-template-main.iuml
+!include templates/styles/ql-style-lib.iuml
+!include templates/sprites/ql-sprites-lib.iuml
 
 skinparam linetype ortho
 left to right direction
@@ -73,6 +76,12 @@ rectangle r <<frame>> {
   }
 
   component [IncomeExpenseStatisticsBoard]
+    !$note = "GUI for displaying statistics related to the income/expense account of a game session (freight session). Measured characteristics: aUEC/SCU, Time/aUEC, etc."
+    $qlNoteRel(nIncomeExpenseStatisticsBoard, [IncomeExpenseStatisticsBoard], ".", $note)
+
+  component [LoadingUnloadingBoard]
+    !$note = "GUI for managing the loading/unloading of goods. Allows the choice of both algorithms for sorting cargo in the ship's hold and finding the best route between stations (the “best” feature depends on the needs defined in the game strategy)"
+    $qlNoteRel(nLoadingUnloadingBoard, [LoadingUnloadingBoard], "..", $note)
 
   '''_______________________________________________
   component [StrategyBoard]
@@ -99,43 +108,46 @@ rectangle r <<frame>> {
 
 }
 
-
 ' relationships
-MainBoard                    ->     IMainMenu1
-DataExport                   ->     IIO
-FilteredContractsListBoard   ->     IContractsEntryBoard
-PreferencesMenu              ->     IDataExport           <<toexport>>
-StarMapDB                    ->     IDataExport           <<toexport>>
-FilteredContractsListBoard   ->     IDataExport           <<toexport>>
-StrategyBoard                ->     IDataExport           <<toexport>>
-PreferencesMenu              ->     IMainMenu2            <<tomenu>>
-StarMapDB                    ->     IMainMenu2            <<tomenu>>
-TimeBoard                    ->     IMainMenu2            <<tomenu>>
-StarMapCargoRouteBoard       ->     IMainMenu2            <<tomenu>>
-FilteredContractsListBoard   ->     IMainMenu2            <<tomenu>>
-ContractsEntryBoard          ->     IMainMenu2            <<tomenu>>
-StrategyBoard                ->     IMainMenu2            <<tomenu>>
-StrategyBoard                ...>   CargoGrid   : use
-StrategyBoard                ...>   ShipDetails : use
+MainBoard                    ->       IMainMenu1
+DataExport                   ->       IIO
+FilteredContractsListBoard   ->       IContractsEntryBoard
+PreferencesMenu              ->       IDataExport           <<toexport>>
+StarMapDB                    ->       IDataExport           <<toexport>>
+FilteredContractsListBoard   ->       IDataExport           <<toexport>>
+StrategyBoard                ->       IDataExport           <<toexport>>
+PreferencesMenu              ->       IMainMenu2            <<tomenu>>
+StarMapDB                    ->       IMainMenu2            <<tomenu>>
+TimeBoard                    ->       IMainMenu2            <<tomenu>>
+StarMapCargoRouteBoard       ->       IMainMenu2            <<tomenu>>
+FilteredContractsListBoard   ->       IMainMenu2            <<tomenu>>
+ContractsEntryBoard          ->       IMainMenu2            <<tomenu>>
+StrategyBoard                ->       IMainMenu2            <<tomenu>>
+IncomeExpenseStatisticsBoard ->       IMainMenu2            <<tomenu>>
+LoadingUnloadingBoard        ->       IMainMenu2            <<tomenu>>
+LoadingUnloadingBoard        ..>      CargoGrid                          : use
+StrategyBoard                .l..>    LoadingUnloadingBoard              : use
+StrategyBoard                .u.>     ShipDetails                        : use
 
 @enduml
 
+
 '
-'
+' StarMapDB
 '
 '''_______________________________________________
 @startuml ql-components_main_starmapdb
 !$title = "StarMapDB"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.puml
-!include templates/styles/ql-style-lib.puml
+!include templates/ql-template-main.iuml
+!include templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
   component [StarMapDB] {
     port PStarMapDBOut1
-    port    PStarMapDBOut2
+    port PStarMapDBOut2
 
       component [StarMapDBCommon]
         !$note = "Central online database of the game universe."
@@ -152,13 +164,16 @@ rectangle r <<frame>> {
 @enduml
 
 
+'
+' TimeBoard
+'
 '''_______________________________________________
 @startuml ql-components_main_timeboard
 !$title = "TimeBoard"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.puml
-!include templates/styles/ql-style-lib.puml
+!include templates/ql-template-main.iuml
+!include templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
@@ -182,12 +197,15 @@ TimeStatistics -[hidden]-> TimeTab
 @enduml
 
 
+'
+' StarMapCargoRouteBoard
+'
 '''_______________________________________________
 @startuml ql-components_main_starmapcargorouteboard
 !$title = "StarMapCargoRouteBoard"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.puml
+!include templates/ql-template-main.iuml
 
 rectangle r <<frame>> {
 
@@ -204,3 +222,76 @@ rectangle r <<frame>> {
 3DStarMapCargoRoute -[hidden]u-> 2DStarMapCargoRoute
 
 @enduml
+
+
+'
+' CargoGrade
+'
+'''_______________________________________________
+@startjson CargoGrade
+!include code/CargoGrade-note.json
+@endjson
+
+
+'
+' StrategyBoard
+'
+'''_______________________________________________
+@startuml ql-components_main_strategyboard
+!$title = "StrategyBoard"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.iuml
+!include templates/styles/ql-style-lib.iuml
+
+rectangle r <<frame>> {
+
+  component [StrategyBoard] {
+    port StrategyBoardOut1
+    port StrategyBoardOut2
+
+      component [CargoGrade]
+        !$note = "<img:out/ql-diagram/CargoGrade.png{scale=1}>"
+        $qlNoteRel(nCargoGrade, [CargoGrade], ".l.", $note)
+        note as ncCargoGrade
+<code>
+  !include code/CargoGrade-note.json
+</code>
+        end note
+        ncCargoGrade .l. nCargoGrade
+
+      component [TransportGuildRank]
+        !$note = ""
+        $qlNoteRel(nTransportGuildRank, [TransportGuildRank], ".", $note)
+
+      component [StartingEndingPoint]
+        !$note = ""
+        $qlNoteRel(nStartingEndingPoint, [StartingEndingPoint], ".", $note)
+
+      component [LimitsStrategy]
+        !$note = ""
+        $qlNoteRel(nLimitsStrategy, [LimitsStrategy], ".", $note)
+
+      component [ShipStrategy]
+        !$note = ""
+        $qlNoteRel(nShipStrategy, [ShipStrategy], ".", $note)
+
+      component [CargoRouteStrategy]
+        !$note = ""
+        $qlNoteRel(nCargoRouteStrategy, [CargoRouteStrategy], ".", $note)
+
+
+
+  }
+
+}
+
+' top to bottom direction
+TransportGuildRank -[hidden]u-> CargoGrade
+CargoGrade -[hidden]u-> StartingEndingPoint
+StartingEndingPoint -[hidden]u-> LimitsStrategy
+LimitsStrategy -[hidden]u-> ShipStrategy
+ShipStrategy -[hidden]u-> CargoRouteStrategy
+
+@enduml
+

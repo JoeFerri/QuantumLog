@@ -9,7 +9,7 @@
  * 
 '/
 
-!include ql-style-global.puml
+!include ql-style-global.iuml
 
 
 /'
@@ -59,7 +59,7 @@
 /'
  * Note
  *
- * Creates a note element.
+ * Create a note element with an optional code block.
  * The $show parameter determines the actual creation of the note.
  * You can globally change the default behavior by modifying the $qlShowNotes() function.
  *
@@ -67,12 +67,19 @@
  *
  * @param $name the name of the element note
  * @param $note note
+ * @param $code code (optional)
  * @param $show True to show the note
 '/
-!procedure $qlNote($name, $note, $show=$qlShowNotes())
+!procedure $qlNote($name, $note, $code="", $show=$qlShowNotes())
   !if $show
     note as $name
       $note
+      !if %not(%strlen($code) == 0)
+'! there should be no spaces to the left of the <code> and </code> tags @JoeFerri
+<code>
+$code
+</code>
+      !endif
     end note
   !endif
 !endprocedure
@@ -94,11 +101,9 @@
  * @param $note note
  * @param $show True to show the note
 '/
-!procedure $qlNoteRel($name1, $name2, $rel, $note, $show=$qlShowNotes())
+!procedure $qlNoteRel($name1, $name2, $rel, $note, $code="", $show=$qlShowNotes())
   !if $show
-    note as $name1
-      $note
-    end note
+    $qlNote($name1, $note, $code, $show)
     $name1 $rel $name2
   !endif
 !endprocedure

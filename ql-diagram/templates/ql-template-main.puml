@@ -1,6 +1,0 @@
-!include ../ql-semver.puml
-!include styles/ql-style-main.puml
-!include headers/ql-header-main.puml
-!include footers/ql-footer-main.puml
-!include titles/ql-title-main.puml
-!include captions/ql-caption-main.puml
