@@ -31,10 +31,10 @@ QuantumLog is an independent, open source, and non-profit project.
 ---
 
 ## Main RoadMap
-- [x] start system design (diagrams, schematics, ...)
+- [x] start system design (diagrams, schematics, flowcharts, ...)
 - [ ] end system design
-- [ ] start Data Base design (diagrams, schematics, ...)
-- [ ] end Data Base design
+- [ ] start Database design (diagrams, schematics, ...)
+- [ ] end Database design
 - [ ] start MVP (Minimum Viable Product) code implementation
 - [ ] MVP testing
 - [ ] end MVP code implementation
