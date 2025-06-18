@@ -48,17 +48,17 @@ rectangle r <<frame>> {
   component [PreferencesMenu]
 
   '''_______________________________________________
-  component [StarMapDB]
+  component "[[ql-components_main_starmapdb.png {go to StarMapDB diagram} StarMapDB]]" as StarMapDB
     !$note = "Database of the game universe. Contains information and data on locations, labels, names, etc."
     $qlNoteRel(nStarMapDB, [StarMapDB], "..", $note)
 
   '''_______________________________________________
-  component [TimeBoard]
+  component "[[ql-components_main_timeboard.png {go to TimeBoard diagram} TimeBoard]]" as TimeBoard
     !$note = "Tools for collecting and analyzing time data."
     $qlNoteRel(nTimeBoard, [TimeBoard], "..", $note)
 
   '''_______________________________________________
-  component [StarMapCargoRouteBoard]
+  component "[[ql-components_main_starmapcargorouteboard.png {go to StarMapCargoRouteBoard diagram} StarMapCargoRouteBoard]]" as StarMapCargoRouteBoard
     !$note = "GUI for displaying trade routes (possible, common or newly defined) in the game map."
     $qlNoteRel(nStarMapCargoRouteBoard, [StarMapCargoRouteBoard], "..", $note)
 
@@ -138,6 +138,7 @@ StrategyBoard                .u.>     ShipDetails                        : use
 '''_______________________________________________
 @startuml ql-components_main_starmapdb
 !$title = "StarMapDB"
+!$rootLink = "[[ql-components_main.png {go to Components Main diagram} Components Main]]"
 !$author = "Giuseppe Ferri"
 
 !include templates/ql-template-main.iuml
@@ -170,6 +171,7 @@ rectangle r <<frame>> {
 '''_______________________________________________
 @startuml ql-components_main_timeboard
 !$title = "TimeBoard"
+!$rootLink = "[[ql-components_main.png {go to Components Main diagram} Components Main]]"
 !$author = "Giuseppe Ferri"
 
 !include templates/ql-template-main.iuml
@@ -203,9 +205,11 @@ TimeStatistics -[hidden]-> TimeTab
 '''_______________________________________________
 @startuml ql-components_main_starmapcargorouteboard
 !$title = "StarMapCargoRouteBoard"
+!$rootLink = "[[ql-components_main.png {go to Components Main diagram} Components Main]]"
 !$author = "Giuseppe Ferri"
 
 !include templates/ql-template-main.iuml
+!include templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
@@ -213,7 +217,12 @@ rectangle r <<frame>> {
     port PStarMapCargoRouteBoardOut
 
       component [3DStarMapCargoRoute]
+        !$note = "GUI for 3D visualization of trade routes in the game map."
+        $qlNoteRel(n3DStarMapCargoRoute, [3DStarMapCargoRoute], ".l.", $note)
+
       component [2DStarMapCargoRoute]
+        !$note = "GUI for 2D visualization of trade routes in the game map."
+        $qlNoteRel(n2DStarMapCargoRoute, [2DStarMapCargoRoute], ".l.", $note)
   }
 
 }
@@ -225,11 +234,29 @@ rectangle r <<frame>> {
 
 
 '
-' CargoGrade
+' CargoGradeCode
 '
 '''_______________________________________________
-@startjson CargoGradeCode
-!include code/CargoGrade-note.json
+@startjson ql-components_main_cargogradecode
+!include code/CargoGradeCode.json
+@endjson
+
+
+'
+' TransportGuildRankCode
+'
+'''_______________________________________________
+@startjson ql-components_main_transportguildrankcode
+!include code/TransportGuildRankCode.json
+@endjson
+
+
+'
+' CargoRouteStrategyCode
+'
+'''_______________________________________________
+@startjson ql-components_main_cargoroutestrategycode
+!include code/CargoRouteStrategyCode.json
 @endjson
 
 
@@ -239,6 +266,7 @@ rectangle r <<frame>> {
 '''_______________________________________________
 @startuml ql-components_main_strategyboard
 !$title = "StrategyBoard"
+!$rootLink = "[[ql-components_main.png {go to main components diagram} Components Main]]"
 !$author = "Giuseppe Ferri"
 
 !include templates/ql-template-main.iuml
@@ -250,48 +278,172 @@ rectangle r <<frame>> {
     port StrategyBoardOut1
     port StrategyBoardOut2
 
+      component [StartingEndingPoint]
+        !$note = "Defining the starting and ending point of the session."
+        $qlNoteRel(nStartingEndingPoint, [StartingEndingPoint], ".l.", $note)
+
+      component "[[ql-components_main_limitsstrategy.png {go to LimitsStrategy diagram} LimitsStrategy]]" as LimitsStrategy
+        !$note = "Numerical limits and ranges."
+        $qlNoteRel(nLimitsStrategy, [LimitsStrategy], ".l.", $note)
+
+      component "[[ql-components_main_shipstrategy.png {go to ShipStrategy diagram} ShipStrategy]]" as ShipStrategy
+        !$note = "Parameters related to the ship used."
+        $qlNoteRel(nShipStrategy, [ShipStrategy], ".l.", $note)
+
+
       component [CargoGrade]
-        !$note = "<img:out/ql-diagram/CargoGradeCode.png{scale=1}>"
+        !$note = "<img:out/ql-diagram/ql-components_main_cargogradecode.png{scale=1}>"
         $qlNoteRel(nCargoGrade, [CargoGrade], ".l.", $note)
-        note as ncCargoGrade
-<code>
-  !include code/CargoGrade-note.json
-</code>
-        end note
-        ncCargoGrade .l. nCargoGrade
+'         note as ncCargoGrade
+' <code>
+'   !include code/CargoGradeCode.json
+' </code>
+'         end note
+'         ncCargoGrade .l. nCargoGrade
 
       component [TransportGuildRank]
-        !$note = ""
-        $qlNoteRel(nTransportGuildRank, [TransportGuildRank], ".", $note)
+        !$note = "<img:out/ql-diagram/ql-components_main_transportguildrankcode.png{scale=1}>"
+        $qlNoteRel(nTransportGuildRank, [TransportGuildRank], ".l.", $note)
+'         note as ncTransportGuildRank
+' <code>
+'   !include code/TransportGuildRankCode.json
+' </code>
+'         end note
+'         ncTransportGuildRank .l. nTransportGuildRank
 
-      component [StartingEndingPoint]
-        !$note = ""
-        $qlNoteRel(nStartingEndingPoint, [StartingEndingPoint], ".", $note)
-
-      component [LimitsStrategy]
-        !$note = ""
-        $qlNoteRel(nLimitsStrategy, [LimitsStrategy], ".", $note)
-
-      component [ShipStrategy]
-        !$note = ""
-        $qlNoteRel(nShipStrategy, [ShipStrategy], ".", $note)
-
-      component [CargoRouteStrategy]
-        !$note = ""
-        $qlNoteRel(nCargoRouteStrategy, [CargoRouteStrategy], ".", $note)
-
-
-
+      component "[[ql-components_main_cargoroutestrategy.png {go to CargoRouteStrategy diagram} CargoRouteStrategy]]" as CargoRouteStrategy
+        !$note = "<img:out/ql-diagram/ql-components_main_cargoroutestrategycode.png{scale=1}>"
+        $qlNoteRel(nCargoRouteStrategy, [CargoRouteStrategy], ".l.", $note)
+'         note as ncCargoRouteStrategy
+' <code>
+'   !include code/CargoRouteStrategyCode.json
+' </code>
+'         end note
+'         ncCargoRouteStrategy .l. nCargoRouteStrategy
   }
 
 }
 
 ' top to bottom direction
-TransportGuildRank -[hidden]u-> CargoGrade
-CargoGrade -[hidden]u-> StartingEndingPoint
-StartingEndingPoint -[hidden]u-> LimitsStrategy
-LimitsStrategy -[hidden]u-> ShipStrategy
-ShipStrategy -[hidden]u-> CargoRouteStrategy
+StartingEndingPoint -[hidden]-> LimitsStrategy
+LimitsStrategy -[hidden]-> ShipStrategy
+
+CargoGrade -[hidden]-> TransportGuildRank
+TransportGuildRank -[hidden]-> CargoRouteStrategy
+
+@enduml
+
+
+'
+' LimitsStrategy
+'
+'''_______________________________________________
+@startuml ql-components_main_limitsstrategy
+!$title = "LimitsStrategy"
+!$rootLink = "[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.iuml
+!include templates/styles/ql-style-lib.iuml
+
+rectangle r <<frame>> {
+
+  component [LimitsStrategy] {
+
+      component [LimitsMaterial]
+        !$note = "Limits on the type of materials."
+        $qlNoteRel(nLimitsMaterial, [LimitsMaterial], ".l.", $note)
+
+      component [LimitsAUec]
+        !$note = "Interval aUec within which to filter the contracts in the list."
+        $qlNoteRel(nLimitsAUec, [LimitsAUec], ".l.", $note)
+
+      component [LimitsRoute]
+        !$note = "Numerosity of loading/unloading stations by session and contract."
+        $qlNoteRel(nLimitsRoute, [LimitsRoute], ".l.", $note)
+
+      component [LimitsSCU]
+        !$note = "SCU range within which to filter the contracts in the list. Maximum size of the crates. Numerosity of the crates."
+        $qlNoteRel(nLimitsSCU, [LimitsSCU], ".l.", $note)
+  }
+
+}
+
+' top to bottom direction
+LimitsMaterial -[hidden]-> LimitsAUec
+LimitsAUec -[hidden]-> LimitsRoute
+LimitsRoute -[hidden]-> LimitsSCU
+
+@enduml
+
+
+'
+' ShipStrategy
+'
+'''_______________________________________________
+@startuml ql-components_main_shipstrategy
+!$title = "ShipStrategy"
+!$rootLink = "[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.iuml
+!include templates/styles/ql-style-lib.iuml
+
+rectangle r <<frame>> {
+
+  component [ShipStrategy] {
+
+      component [ShipOptions]
+        !$note = "Selection of ship components."
+        $qlNoteRel(nShipOptions, [ShipOptions], ".l.", $note)
+
+      component [CargoGridStrategy]
+        !$note = "Choice of loading strategy, i.e., placement of boxes on the grid (choice of algorithm)."
+        $qlNoteRel(nCargoGridStrategy, [CargoGridStrategy], ".l.", $note)
+
+      component [ShipDetailsStrategy]
+        !$note = "View of the details of the ship influenced by the components."
+        $qlNoteRel(nShipDetailsStrategy, [ShipDetailsStrategy], ".l.", $note)
+  }
+
+}
+
+' top to bottom direction
+ShipOptions -[hidden]-> CargoGridStrategy
+CargoGridStrategy -[hidden]-> ShipDetailsStrategy
+
+@enduml
+
+
+'
+' CargoRouteStrategy
+'
+'''_______________________________________________
+@startuml ql-components_main_cargoroutestrategy
+!$title = "CargoRouteStrategy"
+!$rootLink = "[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]"
+!$author = "Giuseppe Ferri"
+
+!include templates/ql-template-main.iuml
+!include templates/styles/ql-style-lib.iuml
+
+rectangle r <<frame>> {
+
+  component [CargoRouteStrategy] {
+
+      component [CargoRouteSimple]
+        !$note = "Selection from one of the routes specified in the HaulCargo_CargoRoute field (see <b>CargoRouteStrategyCode.json</b>)"
+        $qlNoteRel(nCargoRouteSimple, [CargoRouteSimple], ".l.", $note)
+
+      component [CargoRouteMore]
+        !$note = "More refined filtering of route strategy."
+        $qlNoteRel(nCargoRouteMore, [CargoRouteMore], ".l.", $note)
+  }
+
+}
+
+' top to bottom direction
+CargoRouteSimple -[hidden]-> CargoRouteMore
 
 @enduml
 

@@ -1,5 +1,5 @@
-!include ../ql-semver.iuml
 !include styles/ql-style-main.iuml
+!include ../ql-semver.iuml
 !include headers/ql-header-main.iuml
 !include footers/ql-footer-main.iuml
 !include titles/ql-title-main.iuml

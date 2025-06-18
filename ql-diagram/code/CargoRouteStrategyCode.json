@@ -1,0 +1,28 @@
+{
+  "HaulCargo_CargoRoute": [
+    {
+      "key": "HaulCargo_CargoRoute_Local",
+      "level": 0,
+      "route": "Local",
+      "ita_route": "Zona Attuale"
+    },
+    {
+      "key": "HaulCargo_CargoRoute_Planetary",
+      "level": 1,
+      "route": "Planetary",
+      "ita_route": "Planetario"
+    },
+    {
+      "key": "HaulCargo_CargoRoute_Solar",
+      "level": 2,
+      "route": "Solar",
+      "ita_route": "Nel Sistema Locale"
+    },
+    {
+      "key": "HaulCargo_CargoRoute_Interstellar",
+      "level": 3,
+      "route": "Interstellar",
+      "ita_route": "Interstellare"
+    }
+  ]
+}

@@ -1,2 +1,8 @@
-
+!if %variable_exists("$rootLink") && %not(%strlen($rootLink) == 0)
+title
+$title
+<size:14>$rootLink</size>
+end title
+!else
 title $title
+!endif

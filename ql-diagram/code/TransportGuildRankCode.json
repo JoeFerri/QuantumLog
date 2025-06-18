@@ -1,0 +1,46 @@
+{
+  "RepStanding_TransportGuild_Rank": [
+    {
+      "key": "RepStanding_TransportGuild_Rank0",
+      "level": 0,
+      "rank": "Trainee",
+      "ita_rank": "Tirocinante"
+    },
+    {
+      "key": "RepStanding_TransportGuild_Rank1",
+      "level": 1,
+      "rank": "Rookie",
+      "ita_rank": "Principiante"
+    },
+    {
+      "key": "RepStanding_TransportGuild_Rank2",
+      "level": 2,
+      "rank": "Junior",
+      "ita_rank": "Junior"
+    },
+    {
+      "key": "RepStanding_TransportGuild_Rank3",
+      "level": 3,
+      "rank": "Member",
+      "ita_rank": "Membro"
+    },
+    {
+      "key": "RepStanding_TransportGuild_Rank4",
+      "level": 4,
+      "rank": "Experienced",
+      "ita_rank": "Esperto"
+    },
+    {
+      "key": "RepStanding_TransportGuild_Rank5",
+      "level": 5,
+      "rank": "Senior",
+      "ita_rank": "Senior"
+    },
+    {
+      "key": "RepStanding_TransportGuild_Rank6",
+      "level": 6,
+      "rank": "Master",
+      "ita_rank": "Maestro"
+    }
+  ]
+}
