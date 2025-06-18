@@ -66,6 +66,8 @@ ql-note.md
 # Temporary files for compilation, debugging or experimentation
 temp/
 temp.*
+temp-*
+*.temp.*
 
 # Elaboration files
 elab
