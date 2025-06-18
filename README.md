@@ -32,6 +32,7 @@ QuantumLog is an independent, open source, and non-profit project.
 
 ## Main RoadMap
 - [x] start system design (diagrams, schematics, flowcharts, ...)
+    - [diagrams](https://github.com/JoeFerri/QuantumLog/tree/main/out/ql-diagram)
 - [ ] end system design
 - [ ] start Database design (diagrams, schematics, ...)
 - [ ] end Database design
