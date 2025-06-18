@@ -228,7 +228,7 @@ rectangle r <<frame>> {
 ' CargoGrade
 '
 '''_______________________________________________
-@startjson CargoGrade
+@startjson CargoGradeCode
 !include code/CargoGrade-note.json
 @endjson
 
@@ -251,7 +251,7 @@ rectangle r <<frame>> {
     port StrategyBoardOut2
 
       component [CargoGrade]
-        !$note = "<img:out/ql-diagram/CargoGrade.png{scale=1}>"
+        !$note = "<img:out/ql-diagram/CargoGradeCode.png{scale=1}>"
         $qlNoteRel(nCargoGrade, [CargoGrade], ".l.", $note)
         note as ncCargoGrade
 <code>

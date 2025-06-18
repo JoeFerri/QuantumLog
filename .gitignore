@@ -75,3 +75,5 @@ elab
 *.vpp.bak_*
 *.vpp
 vpp/
+
+!scripts/ql-semver/qlsemver.exe
