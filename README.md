@@ -10,8 +10,8 @@
 QuantumLog relies solely on:
 - Player-submitted data (station locations, mission times, ship information, etc.)
 - Public APIs:
-  - [STARMAP POIS API](https://starmap.space/api/v3/pois/index.php) - Points of Interest data
-  - [STARMAP OC API](https://starmap.space/api/v3/oc/index.php) - Outpost and Colony data
+  - [STARMAP POIS API](https://starmap.space/api/v3/pois/index.php) - Points of Interest data (**not yet used**)
+  - [STARMAP OC API](https://starmap.space/api/v3/oc/index.php) - Outpost and Colony data (**not yet used**)
 
 QuantumLog does not access, read, or modify Star Citizen cache, or memory.
 
