@@ -19,7 +19,7 @@ In no way have the Star Citizen game executable files been examined and/or manip
 
 ## Legal Disclaimer
 
-This is an unofficial Star Citizen fansite, not affiliated with the Cloud Imperium group of companies.
+This is an unofficial Star Citizen tool, not affiliated with the Cloud Imperium group of companies.
 
 All content not authored by QuantumLog or users are property of their respective owners.
 
