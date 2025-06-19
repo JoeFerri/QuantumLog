@@ -4,7 +4,13 @@
     - [diagrams](https://github.com/JoeFerri/QuantumLog/tree/main/out/ql-diagram)
     - start: 2025/06/12
     - end:
+- [ ] Wireframes
+    - start:
+    - end:
 - [ ] Database design (diagrams, schematics, ...)
+    - start:
+    - end:
+- [ ] Database implementation
     - start:
     - end:
 - [ ] Study of the VerseTime project [(link)](https://github.com/dydrmr/VerseTime)
