@@ -1,0 +1,46 @@
+/'
+ * QuantumLog
+ * License: MIT
+ * Source: https://github.com/JoeFerri/QuantumLog
+ * Copyright (c) 2025 Giuseppe Ferri <jfinfoit@gmail.com>
+'/
+
+/'
+ * Artifacts Structure.
+ * Only artifacts created from scratch for the project are included in this scheme.
+ * The files are divided by categories and not by directories.
+'/
+
+
+@startwbs ql-wbs_artifacts
+
+!$title = "Structure of Artifacts by Categories"
+!$author = "Giuseppe Ferri"
+
+!include ../templates/ql-template-main.iuml
+
+
+* QuantumLog
+** release
+*** Windows
+**** QuantumLog.exe 1.0.0
+*** Linux
+**** QuantumLog 1.0.0
+** test
+** automation
+*** scripts
+**** <&flag> qlsemver
+*** Makefile
+** diagrams
+*** components
+*** WBS
+** docs
+*** roadmap.md
+*** CHANGELOG.md
+*** CONTRIBUTING.md
+*** release_procedure.md
+*** compile_procedure.md
+*** version.json
+*** README.md
+
+@endwbs

@@ -15,7 +15,7 @@
 !$title = "Components Future Features"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
+!include ../templates/ql-template-main.iuml
 
 
 

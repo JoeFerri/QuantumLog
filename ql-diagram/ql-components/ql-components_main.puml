@@ -19,9 +19,9 @@
 !$title = "Components Main"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
-!include templates/styles/ql-style-lib.iuml
-!include templates/sprites/ql-sprites-lib.iuml
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
+!include ../templates/sprites/ql-sprites-lib.iuml
 
 skinparam linetype ortho
 left to right direction
@@ -141,8 +141,8 @@ StrategyBoard                .u.>     ShipDetails                        : use
 !$rootLink = "[[ql-components_main.png {go to Components Main diagram} Components Main]]"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
-!include templates/styles/ql-style-lib.iuml
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
@@ -174,8 +174,8 @@ rectangle r <<frame>> {
 !$rootLink = "[[ql-components_main.png {go to Components Main diagram} Components Main]]"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
-!include templates/styles/ql-style-lib.iuml
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
@@ -208,8 +208,8 @@ TimeStatistics -[hidden]-> TimeTab
 !$rootLink = "[[ql-components_main.png {go to Components Main diagram} Components Main]]"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
-!include templates/styles/ql-style-lib.iuml
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
@@ -238,7 +238,7 @@ rectangle r <<frame>> {
 '
 '''_______________________________________________
 @startjson ql-components_main_cargogradecode
-!include code/CargoGradeCode.json
+!include ../code/CargoGradeCode.json
 @endjson
 
 
@@ -247,7 +247,7 @@ rectangle r <<frame>> {
 '
 '''_______________________________________________
 @startjson ql-components_main_transportguildrankcode
-!include code/TransportGuildRankCode.json
+!include ../code/TransportGuildRankCode.json
 @endjson
 
 
@@ -256,7 +256,7 @@ rectangle r <<frame>> {
 '
 '''_______________________________________________
 @startjson ql-components_main_cargoroutestrategycode
-!include code/CargoRouteStrategyCode.json
+!include ../code/CargoRouteStrategyCode.json
 @endjson
 
 
@@ -269,8 +269,8 @@ rectangle r <<frame>> {
 !$rootLink = "[[ql-components_main.png {go to main components diagram} Components Main]]"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
-!include templates/styles/ql-style-lib.iuml
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
@@ -343,8 +343,8 @@ TransportGuildRank -[hidden]-> CargoRouteStrategy
 !$rootLink = "[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
-!include templates/styles/ql-style-lib.iuml
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
@@ -386,8 +386,8 @@ LimitsRoute -[hidden]-> LimitsSCU
 !$rootLink = "[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
-!include templates/styles/ql-style-lib.iuml
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 
@@ -424,8 +424,8 @@ CargoGridStrategy -[hidden]-> ShipDetailsStrategy
 !$rootLink = "[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]"
 !$author = "Giuseppe Ferri"
 
-!include templates/ql-template-main.iuml
-!include templates/styles/ql-style-lib.iuml
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
 
 rectangle r <<frame>> {
 

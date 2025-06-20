@@ -1,0 +1,12 @@
+{
+  "plantuml.exportSubFolder": false,
+  "plantuml.jar": "vendor\\plantuml\\plantuml.jar",
+  "plantuml.render": "Local",
+  "plantuml.server": "https://www.plantuml.com/plantuml",
+  "plantuml.commandArgs": [
+    "-Dplantuml.allowmixing=true"
+  ],
+  "plantuml.exportConcurrency": 5,
+  "plantuml.diagramsRoot": "ql-diagram",
+  "plantuml.exportMapFile": true
+}
