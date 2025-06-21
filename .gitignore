@@ -63,6 +63,9 @@ ql-note.md
 # Temporary test files
 /testing
 
+# Private files
+private/
+
 # Temporary files for compilation, debugging or experimentation
 temp/
 temp.*
@@ -79,4 +82,12 @@ elab
 *.vpp
 vpp/
 
+
+#
+#
+# ---------------------------------------------------------------------------- #
+# to be included                                             #
+# ---------------------------------------------------------------------------- #
+
+# versioning
 !scripts/ql-semver/qlsemver.exe
