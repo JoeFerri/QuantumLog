@@ -1,7 +1,12 @@
 # RoadMap [QuantumLog](https://github.com/JoeFerri/QuantumLog)
 
 - [x] System design (diagrams, schematics, flowcharts, ...)
-    - [diagrams](https://github.com/JoeFerri/QuantumLog/tree/main/out/ql-diagram)
+    - [diagrams](https://github.com/JoeFerri/QuantumLog/tree/main/out)
+        - [x] Components
+        - [x] WBS
+        - [ ] Use Case
+        - [ ] Activity
+        - [ ] Class
     - start: 2025/06/12
     - end:
 - [ ] Wireframes
