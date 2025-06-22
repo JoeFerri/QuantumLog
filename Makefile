@@ -8,7 +8,7 @@
 #
 
 
-###
+### ############################################### ENVIRONMENT
 ifeq ($(OS),Windows_NT)
     DETECTED_OS := Windows
 else
@@ -38,38 +38,12 @@ else
     CAT := cat
 endif
 
-###
-define check_uml_link
-    $(strip $(shell $(SHELL_GREP_LINK_UML_CMD) $(subst /,\,"$1") $(SHELL_NULL) && echo yes))
-endef
 
-
-###
-PLANTUML_JAR:=vendor/plantuml/plantuml.jar
-PLANTUML_TO_IMAGE_OPTS:=-Dplantuml.allowmixing=true
-
-###
-DIAGRAM_SRC_DIR:=ql-diagram
-DIAGRAM_OUT_DIR:=out
-
-###
-PUML_FILES:=$(wildcard $(DIAGRAM_SRC_DIR)/*/*.puml)
-PNG_FILES:=$(patsubst $(DIAGRAM_SRC_DIR)/%.puml,$(DIAGRAM_OUT_DIR)/%.png,$(PUML_FILES))
-
-PUML_FILES_WITH_LINKS :=
-$(foreach f,$(PUML_FILES),\
-    $(eval HAS_LINK := $(call check_uml_link,$(f)))\
-    $(if $(filter yes,$(HAS_LINK)),\
-        $(eval PUML_FILES_WITH_LINKS += $(f)))\
-)
-MAP_FILES:=$(patsubst $(DIAGRAM_SRC_DIR)/%.puml,$(DIAGRAM_OUT_DIR)/%.cmapx,$(PUML_FILES_WITH_LINKS))
-
-
-###
+### ############################################### MAKEFILE
 .DEFAULT_GOAL := help
 
-.PHONY: all diagram clean test help
-all: diagram
+.PHONY: all diagram semver clean test help
+all: diagram semver
 
 ###
 test:
@@ -85,34 +59,102 @@ help:
 	@echo $$ make test : test the Makefile
 	@echo $$ make all : generate all project artifacts
 	@echo $$ make diagram : generate all diagrams
+	@echo $$ make semver : generate versioning artifacts (version.json, ql-semver.iuml)
 	@echo $$ make clean : clean all artifacts
+
+###
+clean:
+ifeq ($(DETECTED_OS),Windows)
+	@echo " [clean] $(DIAGRAM_OUT_DIR)..."
+	@$(RMDIR) "$(subst /,\,$(DIAGRAM_OUT_DIR))" $(SHELL_NULL) || set dummy=
+	@echo " [clean] qlsemver..."
+	@$(RM) "$(subst /,\,$(VERSION_JSON))" "$(subst /,\,$(QLSEMVER_IUML))" $(SHELL_NULL) || set dummy=
+else
+	@echo " [clean] $(DIAGRAM_OUT_DIR)..."
+	@$(RMDIR) "$(DIAGRAM_OUT_DIR)" $(SHELL_NULL) || set dummy=
+	@echo " [clean] qlsemver..."
+	@$(RM) "$(VERSION_JSON)" "$(QLSEMVER_IUML)" $(SHELL_NULL) || set dummy=
+endif
+
+
+
+### ############################################### DIRECTORIES
+QLSEMVER_SCRIPT_DIR := scripts/ql-semver
+PROJECT_DIR := project
+DIAGRAM_SRC_DIR:=ql-diagram
+DIAGRAM_OUT_DIR:=out
+
+
+ifeq ($(DETECTED_OS),Windows)
+    EXECUTE_MKDIR = @$(MKDIR) $(subst /,\,$(1)) $(SHELL_NULL) || set dummy=
+else
+    EXECUTE_MKDIR = @$(MKDIR) $(1)
+endif
+
+$(DIAGRAM_SRC_DIR):
+	$(eval $(call EXECUTE_MKDIR,$(DIAGRAM_SRC_DIR)))
+
+
+### ############################################### VERSIONING
+ifeq ($(DETECTED_OS),Windows)
+    QLSEMVER_SCRIPT := qlsemver.exe
+else
+    QLSEMVER_SCRIPT := qlsemver
+endif
+
+QLSEMVER_CONF_JSON := $(QLSEMVER_SCRIPT_DIR)/conf.json
+QUANTUMLOG_LPI := $(PROJECT_DIR)/QuantumLog.lpi
+
+VERSION_JSON := version.json
+QLSEMVER_IUML := $(DIAGRAM_SRC_DIR)/ql-semver.iuml
+
+semver: $(VERSION_JSON) $(QLSEMVER_IUML)
+
+$(VERSION_JSON) $(QLSEMVER_IUML): $(QLSEMVER_CONF_JSON) $(QUANTUMLOG_LPI) | $(DIAGRAM_SRC_DIR)
+	@echo " [qlsemver] generate versioning artifacts..."
+ifeq ($(DETECTED_OS),Windows)
+	cmd /C "cd $(QLSEMVER_SCRIPT_DIR) && $(notdir $(QLSEMVER_SCRIPT))"
+else
+	(cd $(QLSEMVER_SCRIPT_DIR) && ./$(notdir $(QLSEMVER_SCRIPT)))
+endif
+
+
+
+### ############################################### UML
+define check_uml_link
+    $(strip $(shell $(SHELL_GREP_LINK_UML_CMD) $(subst /,\,"$1") $(SHELL_NULL) && echo yes))
+endef
 
 
 ###
+PLANTUML_JAR:=vendor/plantuml/plantuml.jar
+PLANTUML_TO_IMAGE_OPTS:=-Dplantuml.allowmixing=true
+
+###
+PUML_FILES:=$(wildcard $(DIAGRAM_SRC_DIR)/*/*.puml)
+PNG_FILES:=$(patsubst $(DIAGRAM_SRC_DIR)/%.puml,$(DIAGRAM_OUT_DIR)/%.png,$(PUML_FILES))
+
+PUML_FILES_WITH_LINKS :=
+$(foreach f,$(PUML_FILES),\
+    $(eval HAS_LINK := $(call check_uml_link,$(f)))\
+    $(if $(filter yes,$(HAS_LINK)),\
+        $(eval PUML_FILES_WITH_LINKS += $(f)))\
+)
+MAP_FILES:=$(patsubst $(DIAGRAM_SRC_DIR)/%.puml,$(DIAGRAM_OUT_DIR)/%.cmapx,$(PUML_FILES_WITH_LINKS))
+
 #diagram: $(PNG_FILES) $(MAP_FILES)
 diagram: $(PNG_FILES)
 
 ### PNG
-$(DIAGRAM_OUT_DIR)/%.png: $(DIAGRAM_SRC_DIR)/%.puml
-	@echo " [PNG] $@"
-ifeq ($(DETECTED_OS),Windows)
-	@$(MKDIR) $(subst /,\,$(@D)) >nul 2>&1 || set dummy=
-else
-	@$(MKDIR) $(@D)
-endif
+$(DIAGRAM_OUT_DIR)/%.png: $(DIAGRAM_SRC_DIR)/%.puml semver
+	@echo " [mkdir] Creazione di $(@D)"
+	$(eval $(call EXECUTE_MKDIR,$(@D)))
+	@echo " [png] $@"
 	@java -jar $(PLANTUML_JAR) $(PLANTUML_TO_IMAGE_OPTS) -tpng -o "$(CURDIR)/$(@D)" "$<"
 
 ### CMAPX
 # $(DIAGRAM_OUT_DIR)/%.cmapx: $(DIAGRAM_SRC_DIR)/%.puml
-# 	@echo " [CMAPX] $@"
-# ifeq ($(DETECTED_OS),Windows)
-# 	@$(MKDIR) $(subst /,\,$(@D)) >nul 2>&1 || set dummy=
-# else
-# 	@$(MKDIR) $(@D)
-# endif
+#	@echo " [mkdir] Creazione di $(@D)"
+#	$(eval $(call EXECUTE_MKDIR,$(@D)))
+# 	@echo " [cmapx] $@"
 # 	@$(CAT) $< | java -jar $(PLANTUML_JAR) -pipemap > "$(CURDIR)/$@" || true
-
-###
-clean:
-	@echo "Cleaning $(DIAGRAM_OUT_DIR)…"
-	@$(RMDIR) $(DIAGRAM_OUT_DIR)
