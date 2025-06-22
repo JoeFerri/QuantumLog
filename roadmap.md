@@ -1,6 +1,6 @@
 # RoadMap [QuantumLog](https://github.com/JoeFerri/QuantumLog)
 
-- [x] System design (diagrams, schematics, flowcharts, ...)
+- [ ] System design (diagrams, schematics, flowcharts, ...)
     - start: 2025/06/12
         - [diagrams](https://github.com/JoeFerri/QuantumLog/tree/main/out)
             - [x] Components
@@ -9,7 +9,7 @@
             - [ ] Activity
             - [ ] Class
     - end:
-- GitHub Project
+- [ ] GitHub Project
     - start: 2025/06/22
         - [x] labels [JoeFerri/labels](https://github.com/JoeFerri/labels)
     - end:
