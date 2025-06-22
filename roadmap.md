@@ -9,6 +9,8 @@
         - [ ] Class
     - start: 2025/06/12
     - end:
+- GitHub Project
+    - [x] labels [https://github.com/JoeFerri/labels](https://github.com/JoeFerri/labels)
 - [ ] Wireframes
     - start:
     - end:
