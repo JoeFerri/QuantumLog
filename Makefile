@@ -47,10 +47,14 @@ all: diagram semver
 
 ###
 test:
-	@echo DETECTED_OS = $(DETECTED_OS)
-	@echo PUML_FILES = $(PUML_FILES)
-	@echo PNG_FILES = $(PNG_FILES)
-	@echo MAP_FILES = $(MAP_FILES)
+	@echo DETECTED_OS          = $(DETECTED_OS)
+	@echo PUML_FILES           = $(PUML_FILES)
+	@echo PUML_NO_CODE_FILES   = $(PUML_NO_CODE_FILES)
+	@echo PUML_WITH_CODE_FILES = $(PUML_WITH_CODE_FILES)
+	@echo PNG_FILES            = $(PNG_FILES)
+	@echo PNG_NO_CODE_FILES    = $(PNG_NO_CODE_FILES)
+	@echo PNG_WITH_CODE_FILES  = $(PNG_WITH_CODE_FILES)
+	@echo MAP_FILES            = $(MAP_FILES)
 
 ###
 help:
@@ -82,7 +86,9 @@ endif
 QLSEMVER_SCRIPT_DIR := scripts/ql-semver
 PROJECT_DIR := project
 DIAGRAM_SRC_DIR:=ql-diagram
+DIAGRAM_SRC_CODE_DIR:=$(DIAGRAM_SRC_DIR)/ql-code
 DIAGRAM_OUT_DIR:=out
+DIAGRAM_OUT_CODE_DIR:=$(DIAGRAM_OUT_DIR)/ql-code
 
 
 ifeq ($(DETECTED_OS),Windows)
@@ -132,7 +138,12 @@ PLANTUML_TO_IMAGE_OPTS:=-Dplantuml.allowmixing=true
 
 ###
 PUML_FILES:=$(wildcard $(DIAGRAM_SRC_DIR)/*/*.puml)
+PUML_NO_CODE_FILES:=$(filter-out $(DIAGRAM_SRC_CODE_DIR)/%.puml, $(PUML_FILES))
+PUML_WITH_CODE_FILES:=$(filter $(DIAGRAM_SRC_CODE_DIR)/%.puml, $(PUML_FILES))
+
 PNG_FILES:=$(patsubst $(DIAGRAM_SRC_DIR)/%.puml,$(DIAGRAM_OUT_DIR)/%.png,$(PUML_FILES))
+PNG_NO_CODE_FILES:=$(patsubst $(DIAGRAM_SRC_DIR)/%.puml,$(DIAGRAM_OUT_DIR)/%.png,$(PUML_NO_CODE_FILES))
+PNG_WITH_CODE_FILES:=$(patsubst $(DIAGRAM_SRC_DIR)/%.puml,$(DIAGRAM_OUT_DIR)/%.png,$(PUML_WITH_CODE_FILES))
 
 PUML_FILES_WITH_LINKS :=
 $(foreach f,$(PUML_FILES),\
@@ -145,7 +156,12 @@ MAP_FILES:=$(patsubst $(DIAGRAM_SRC_DIR)/%.puml,$(DIAGRAM_OUT_DIR)/%.cmapx,$(PUM
 #diagram: $(PNG_FILES) $(MAP_FILES)
 diagram: $(PNG_FILES)
 
+#$(PNG_NO_CODE_FILES): $(PNG_WITH_CODE_FILES)
+#$(PNG_NO_CODE_FILES): $(PUML_WITH_CODE_FILES)
+#$(PUML_NO_CODE_FILES): $(PUML_WITH_CODE_FILES)
+
 ### PNG
+#$(DIAGRAM_OUT_DIR)/%.png: $(DIAGRAM_SRC_DIR)/%.puml $(PUML_WITH_CODE_FILES) semver
 $(DIAGRAM_OUT_DIR)/%.png: $(DIAGRAM_SRC_DIR)/%.puml semver
 	@echo " [mkdir] Creazione di $(@D)"
 	$(eval $(call EXECUTE_MKDIR,$(@D)))

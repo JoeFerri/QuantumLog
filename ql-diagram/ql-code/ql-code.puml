@@ -1,0 +1,38 @@
+/'
+ * QuantumLog
+ * License: MIT
+ * Source: https://github.com/JoeFerri/QuantumLog
+ * Copyright (c) 2025 Giuseppe Ferri <jfinfoit@gmail.com>
+'/
+
+/'
+ * Code
+'/
+
+
+
+'
+' CargoGradeCode
+'
+'''_______________________________________________
+@startjson ql-code_cargogradecode
+!include ../code/CargoGradeCode.json
+@endjson
+
+
+'
+' TransportGuildRankCode
+'
+'''_______________________________________________
+@startjson ql-code_transportguildrankcode
+!include ../code/TransportGuildRankCode.json
+@endjson
+
+
+'
+' CargoRouteStrategyCode
+'
+'''_______________________________________________
+@startjson ql-code_cargoroutestrategycode
+!include ../code/CargoRouteStrategyCode.json
+@endjson

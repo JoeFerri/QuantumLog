@@ -1,0 +1,40 @@
+/'
+ * QuantumLog
+ * License: MIT
+ * Source: https://github.com/JoeFerri/QuantumLog
+ * Copyright (c) 2025 Giuseppe Ferri <jfinfoit@gmail.com>
+'/
+
+/'
+ * Use Cases
+'/
+
+
+
+'
+' UseCases
+' TODO
+'
+'''_______________________________________________
+@startuml ql-usecases
+!$title = "UseCases"
+!$author = "Giuseppe Ferri"
+
+!include ../templates/ql-template-main.iuml
+!include ../templates/styles/ql-style-lib.iuml
+
+actor :Player: as P
+actor :StarMapDB: as DB
+actor :StarMapDBCommon: as DBCommon
+actor :StarMapDBPersonal: as DBPersonal
+
+usecase (Visualizza) as UC1
+
+P - UC1 : visualizza missioni
+
+DBCommon   ..|> DB
+DBPersonal ..|> DB
+
+
+@enduml
+

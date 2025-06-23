@@ -1,6 +1,6 @@
 <map id="ql-components_main_strategyboard_map" name="ql-components_main_strategyboard_map">
-<area shape="rect" id="id1" href="ql-components_main.png" title="go to main components diagram" alt="" coords="571,90,698,109"/>
-<area shape="rect" id="id2" href="ql-components_main_shipstrategy.png" title="go to ShipStrategy diagram" alt="" coords="672,547,791,573"/>
-<area shape="rect" id="id3" href="ql-components_main_limitsstrategy.png" title="go to LimitsStrategy diagram" alt="" coords="666,427,798,453"/>
-<area shape="rect" id="id4" href="ql-components_main_cargoroutestrategy.png" title="go to CargoRouteStrategy diagram" alt="" coords="210,547,400,573"/>
+<area shape="rect" id="id1" href="ql-components_main.png" title="go to main components diagram" alt="" coords="827,90,953,109"/>
+<area shape="rect" id="id2" href="ql-components_main_shipstrategy.png" title="go to ShipStrategy diagram" alt="" coords="1222,1846,1341,1872"/>
+<area shape="rect" id="id3" href="ql-components_main_limitsstrategy.png" title="go to LimitsStrategy diagram" alt="" coords="1216,1174,1348,1200"/>
+<area shape="rect" id="id4" href="../ql-code/ql-code_cargoroutestrategycode.png" title="go to CargoRouteStrategy diagram" alt="" coords="172,1846,362,1872"/>
 </map>

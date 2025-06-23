@@ -234,33 +234,6 @@ rectangle r <<frame>> {
 
 
 '
-' CargoGradeCode
-'
-'''_______________________________________________
-@startjson ql-components_main_cargogradecode
-!include ../code/CargoGradeCode.json
-@endjson
-
-
-'
-' TransportGuildRankCode
-'
-'''_______________________________________________
-@startjson ql-components_main_transportguildrankcode
-!include ../code/TransportGuildRankCode.json
-@endjson
-
-
-'
-' CargoRouteStrategyCode
-'
-'''_______________________________________________
-@startjson ql-components_main_cargoroutestrategycode
-!include ../code/CargoRouteStrategyCode.json
-@endjson
-
-
-'
 ' StrategyBoard
 '
 '''_______________________________________________
@@ -292,7 +265,7 @@ rectangle r <<frame>> {
 
 
       component [CargoGrade]
-        !$note = "<img:out/ql-diagram/ql-components_main_cargogradecode.png{scale=1}>"
+        !$note = "<img:./../../out/ql-code/ql-code_cargogradecode.png{scale=1}>"
         $qlNoteRel(nCargoGrade, [CargoGrade], ".l.", $note)
 '         note as ncCargoGrade
 ' <code>
@@ -302,7 +275,7 @@ rectangle r <<frame>> {
 '         ncCargoGrade .l. nCargoGrade
 
       component [TransportGuildRank]
-        !$note = "<img:out/ql-diagram/ql-components_main_transportguildrankcode.png{scale=1}>"
+        !$note = "<img:./../../out/ql-code/ql-code_transportguildrankcode.png{scale=1}>"
         $qlNoteRel(nTransportGuildRank, [TransportGuildRank], ".l.", $note)
 '         note as ncTransportGuildRank
 ' <code>
@@ -311,8 +284,8 @@ rectangle r <<frame>> {
 '         end note
 '         ncTransportGuildRank .l. nTransportGuildRank
 
-      component "[[ql-components_main_cargoroutestrategy.png {go to CargoRouteStrategy diagram} CargoRouteStrategy]]" as CargoRouteStrategy
-        !$note = "<img:out/ql-diagram/ql-components_main_cargoroutestrategycode.png{scale=1}>"
+      component "[[../ql-code/ql-code_cargoroutestrategycode.png {go to CargoRouteStrategy diagram} CargoRouteStrategy]]" as CargoRouteStrategy
+        !$note = "<img:./../../out/ql-code/ql-code_cargoroutestrategycode.png{scale=1}>"
         $qlNoteRel(nCargoRouteStrategy, [CargoRouteStrategy], ".l.", $note)
 '         note as ncCargoRouteStrategy
 ' <code>
