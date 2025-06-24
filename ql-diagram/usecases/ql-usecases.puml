@@ -13,7 +13,6 @@
 
 '
 ' UseCases
-' TODO
 '
 '''_______________________________________________
 @startuml ql-usecases
@@ -88,15 +87,25 @@ rectangle r <<frame>> {
 
 --
 ..[[[../ql-components/ql-components_main.png {go to Components Main diagram} DataExport]]].."
+
+
+
+  '''_______________________________________________
+  usecase UCStarMapCargoRouteBoard as "Display trade routes (possible, common or newly defined) in the game map
+
+--
+..[[[../ql-components/ql-components_main.png {go to Components Main diagram} StarMapCargoRouteBoard]]].."
 }
 
 
+
+
 ' relationships
-P -d-- UCFilteredContractsListBoard
+P -d- UCFilteredContractsListBoard
 UCFilteredContractsList .l.|> UCFilteredContractsListBoard : <extends>
 UCChangeStrategy .l.|> UCFilteredContractsList : <extends>
 UCLoadingUnloadingBoard .l.|> UCChangeStrategy : <extends>
-UCLoadingUnloadingBoard .u.|> UCCargoGrid : <include>
+UCLoadingUnloadingBoard .d.|> UCCargoGrid : <include>
 UCFilteredContractsListBoard .l.> UCDataExport : <include>
 UCChangeStrategy ..> UCDataExport : <include>
 UCLoadingUnloadingBoard ..> UCDataExport : <include>
@@ -112,6 +121,9 @@ P -d- UCTimeBoard
 UCTime .l..|> UCTimeBoard : <extends>
 UCTimeBoard ..> UCDataExport : <include>
 
+P -d- UCStarMapCargoRouteBoard
+UCStarMapCargoRouteBoard ..> UCDataExport : <include>
+
 
 ' DBCommon   .|> DB
 ' DBPersonal .|> DB
@@ -122,7 +134,10 @@ UCTimeBoard ..> UCDataExport : <include>
 UCLoadingUnloadingBoard -[hidden]-> UCChangeStrategy
 UCContractsEntry -[hidden]-> UCLoadingUnloadingBoard
 UCIncomeExpenseStatisticsBoard -[hidden]l-> UCContractsEntry
+UCCargoGrid -[hidden]d-> UCChangeStrategy
 UCTimeBoard -[hidden]l-> UCIncomeExpenseStatisticsBoard
+UCContractsEntryBoard -[hidden]l-> UCIncomeExpenseStatisticsBoard
+UCStarMapCargoRouteBoard -[hidden]l-> UCTimeBoard
 
 
 @enduml
