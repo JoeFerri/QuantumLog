@@ -107,3 +107,19 @@ $code
     $name1 $rel $name2
   !endif
 !endprocedure
+
+
+
+/'
+ * Quote mark escape
+'/
+!function $quotemark()
+  !return %chr(34)
+!endfunction
+
+/'
+ * Quote mark escape alias of $quotemark()
+'/
+!function $qm()
+  !return $quotemark()
+!endfunction

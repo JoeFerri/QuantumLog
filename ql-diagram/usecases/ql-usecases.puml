@@ -23,17 +23,106 @@
 !include ../templates/ql-template-main.iuml
 !include ../templates/styles/ql-style-lib.iuml
 
-actor :Player: as P
-actor :StarMapDB: as DB
-actor :StarMapDBCommon: as DBCommon
-actor :StarMapDBPersonal: as DBPersonal
+left to right direction
 
-usecase (Visualizza) as UC1
 
-P - UC1 : visualizza missioni
+rectangle r <<frame>> {
 
-DBCommon   ..|> DB
-DBPersonal ..|> DB
+  actor :Player: as P
+
+  ' actor :StarMapDBServer: as DB
+  ' actor :StarMapDBCommonServer: as DBCommon
+  ' actor :StarMapDBPersonalServer: as DBPersonal
+
+
+
+  '''_______________________________________________
+  usecase UCFilteredContractsListBoard as "View filtered list of contracts
+
+--
+..[[[../ql-components/ql-components_main.png {go to Components Main diagram} FilteredContractsListBoard]]].."
+  usecase (Filtered list of contracts) as UCFilteredContractsList
+  usecase UCLoadingUnloadingBoard as "Change the Loading/Unloading Strategy
+
+--
+..[[[../ql-components/ql-components_main.png {go to LoadingUnloadingBoard diagram} LoadingUnloadingBoard]]].."
+
+  usecase (Manage load placement on the grid) as UCCargoGrid
+
+  usecase UCChangeStrategy as "Change the game Strategy
+
+--
+..[[[../ql-components/ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]].."
+
+
+
+  '''_______________________________________________
+  usecase UCContractsEntryBoard as "View chosen contracts from the active list
+
+--
+..[[[../ql-components/ql-components_main.png {go to Components Main diagram} ContractsEntryBoard]]].."
+  usecase (Enter the chosen contracts in the active list) as UCContractsEntry
+
+
+
+  '''_______________________________________________
+  usecase UCIncomeExpenseStatisticsBoard as "View income and expense statistics
+
+--
+..[[[../ql-components/ql-components_main.png {go to Components Main diagram} IncomeExpenseStatisticsBoard]]].."
+
+
+
+  '''_______________________________________________
+  usecase UCTimeBoard as "View statistics on time data
+
+--
+..[[[../ql-components/ql-components_main_timeboard.png {go to TimeBoard diagram} TimeBoard]]].."
+
+  usecase (Enter new time data) as UCTime
+
+
+
+  '''_______________________________________________
+  usecase UCDataExport as "Export data to a file
+
+--
+..[[[../ql-components/ql-components_main.png {go to Components Main diagram} DataExport]]].."
+}
+
+
+' relationships
+P -d-- UCFilteredContractsListBoard
+UCFilteredContractsList .l.|> UCFilteredContractsListBoard : <extends>
+UCChangeStrategy .l.|> UCFilteredContractsList : <extends>
+UCLoadingUnloadingBoard .l.|> UCChangeStrategy : <extends>
+UCLoadingUnloadingBoard .u.|> UCCargoGrid : <include>
+UCFilteredContractsListBoard .l.> UCDataExport : <include>
+UCChangeStrategy ..> UCDataExport : <include>
+UCLoadingUnloadingBoard ..> UCDataExport : <include>
+
+P -d- UCContractsEntryBoard
+UCContractsEntry .l..|> UCContractsEntryBoard : <extends>
+UCContractsEntryBoard ..> UCDataExport : <include>
+
+P - UCIncomeExpenseStatisticsBoard
+UCIncomeExpenseStatisticsBoard ..> UCDataExport : <include>
+
+P -d- UCTimeBoard
+UCTime .l..|> UCTimeBoard : <extends>
+UCTimeBoard ..> UCDataExport : <include>
+
+
+' DBCommon   .|> DB
+' DBPersonal .|> DB
+
+
+
+' top to bottom direction
+UCLoadingUnloadingBoard -[hidden]-> UCChangeStrategy
+UCContractsEntry -[hidden]-> UCLoadingUnloadingBoard
+UCIncomeExpenseStatisticsBoard -[hidden]l-> UCContractsEntry
+UCTimeBoard -[hidden]l-> UCIncomeExpenseStatisticsBoard
 
 
 @enduml

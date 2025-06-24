@@ -80,11 +80,11 @@ rectangle r <<frame>> {
     $qlNoteRel(nIncomeExpenseStatisticsBoard, [IncomeExpenseStatisticsBoard], ".", $note)
 
   component [LoadingUnloadingBoard]
-    !$note = "GUI for managing the loading/unloading of goods. Allows the choice of both algorithms for sorting cargo in the ship's hold and finding the best route between stations (the “best” feature depends on the needs defined in the game strategy)"
+    !$note = "GUI for managing the loading/unloading of goods. Allows the choice of both algorithms for sorting cargo in the ship's hold and finding the best route between stations (the "+$qm()+"best"+$qm()+" feature depends on the needs defined in the game strategy)"
     $qlNoteRel(nLoadingUnloadingBoard, [LoadingUnloadingBoard], "..", $note)
 
   '''_______________________________________________
-  component [StrategyBoard]
+  component "[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]" as StrategyBoard
     !$note = "GUI for strategy definition. It is composed of subcomponents that specialize in choosing/defining options and limits to be applied to either the contract list, route search and calculation algorithms, or cargo arrangement."
     $qlNoteRel(nStrategyBoard, [StrategyBoard], ".", $note)
   
@@ -103,31 +103,34 @@ rectangle r <<frame>> {
 
     $qlInterfaceIconComponent(DataExport, Navy) as DataExport
       interface IDataExport <<toexport>>
-        DataExport -u- IDataExport <<toexport>>
+        DataExport -u-- IDataExport <<toexport>>
   }
 
 }
 
 ' relationships
-MainBoard                    ->       IMainMenu1
-DataExport                   ->       IIO
-FilteredContractsListBoard   ->       IContractsEntryBoard
-PreferencesMenu              ->       IDataExport           <<toexport>>
-StarMapDB                    ->       IDataExport           <<toexport>>
-FilteredContractsListBoard   ->       IDataExport           <<toexport>>
-StrategyBoard                ->       IDataExport           <<toexport>>
-PreferencesMenu              ->       IMainMenu2            <<tomenu>>
-StarMapDB                    ->       IMainMenu2            <<tomenu>>
-TimeBoard                    ->       IMainMenu2            <<tomenu>>
-StarMapCargoRouteBoard       ->       IMainMenu2            <<tomenu>>
-FilteredContractsListBoard   ->       IMainMenu2            <<tomenu>>
-ContractsEntryBoard          ->       IMainMenu2            <<tomenu>>
-StrategyBoard                ->       IMainMenu2            <<tomenu>>
-IncomeExpenseStatisticsBoard ->       IMainMenu2            <<tomenu>>
-LoadingUnloadingBoard        ->       IMainMenu2            <<tomenu>>
-LoadingUnloadingBoard        ..>      CargoGrid                          : use
-StrategyBoard                .l..>    LoadingUnloadingBoard              : use
-StrategyBoard                .u.>     ShipDetails                        : use
+MainBoard                       ->       IMainMenu1
+DataExport                      ->       IIO
+FilteredContractsListBoard      ->       IContractsEntryBoard
+PreferencesMenu                 ->       IDataExport           <<toexport>>
+StarMapDB                       ->       IDataExport           <<toexport>>
+FilteredContractsListBoard      ->       IDataExport           <<toexport>>
+StrategyBoard                   ->       IDataExport           <<toexport>>
+LoadingUnloadingBoard           ->       IDataExport           <<toexport>>
+TimeBoard                       ->       IDataExport           <<toexport>>
+IncomeExpenseStatisticsBoard    ->       IDataExport           <<toexport>>
+PreferencesMenu                 ->       IMainMenu2            <<tomenu>>
+StarMapDB                       ->       IMainMenu2            <<tomenu>>
+TimeBoard                       ->       IMainMenu2            <<tomenu>>
+StarMapCargoRouteBoard          ->       IMainMenu2            <<tomenu>>
+FilteredContractsListBoard      ->       IMainMenu2            <<tomenu>>
+ContractsEntryBoard             ->       IMainMenu2            <<tomenu>>
+StrategyBoard                   ->       IMainMenu2            <<tomenu>>
+IncomeExpenseStatisticsBoard    ->       IMainMenu2            <<tomenu>>
+LoadingUnloadingBoard           ->       IMainMenu2            <<tomenu>>
+LoadingUnloadingBoard           ..>      CargoGrid                          : use
+StrategyBoard                   .l..>    LoadingUnloadingBoard              : use
+StrategyBoard                   .u.>     ShipDetails                        : use
 
 @enduml
 

@@ -1,5 +1,6 @@
 <map id="ql-components_main_map" name="ql-components_main_map">
 <area shape="rect" id="id1" href="ql-components_main_timeboard.png" title="go to TimeBoard diagram" alt="" coords="602,1682,703,1709"/>
 <area shape="rect" id="id2" href="ql-components_main_starmapdb.png" title="go to StarMapDB diagram" alt="" coords="599,1589,707,1615"/>
-<area shape="rect" id="id3" href="ql-components_main_starmapcargorouteboard.png" title="go to StarMapCargoRouteBoard diagram" alt="" coords="529,1776,776,1802"/>
+<area shape="rect" id="id3" href="ql-components_main_strategyboard.png" title="go to StrategyBoard diagram" alt="" coords="586,1261,719,1288"/>
+<area shape="rect" id="id4" href="ql-components_main_starmapcargorouteboard.png" title="go to StarMapCargoRouteBoard diagram" alt="" coords="529,1776,776,1802"/>
 </map>
