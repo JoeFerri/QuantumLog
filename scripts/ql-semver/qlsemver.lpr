@@ -201,6 +201,7 @@ var
   SemverFile: string;
   FileContent: string;
   OutputFile: TextFile;
+  FileOpened: Boolean;
 begin
   SemverFile := IncludeTrailingPathDelimiter(Config.qlDiagramPath) + Config.qlSemverName;
 
@@ -211,12 +212,20 @@ begin
     FileContent := FileContent + '-' + Config.preRelease;
 
   FileContent := FileContent + '"';
-
+  FileOpened := False;
+  AssignFile(OutputFile, SemverFile);
   try
-    AssignFile(OutputFile, SemverFile);
-    Rewrite(OutputFile);
-    WriteLn(OutputFile, FileContent);
-    CloseFile(OutputFile);
+    try
+      Rewrite(OutputFile);
+      FileOpened := True;
+
+      WriteLn(OutputFile, FileContent);
+    finally
+      if FileOpened then
+      begin
+        CloseFile(OutputFile);
+      end;
+    end;
   except
     on E: Exception do
       ExitWithError('Error creating semver file: ' + E.Message);
@@ -229,6 +238,7 @@ var
   JSONObject: TJSONObject;
   JSONArray: TJSONArray;
   OutputFile: TextFile;
+  FileOpened: Boolean;
   i: Integer;
   SemverString: string;
 begin
@@ -240,8 +250,9 @@ begin
     SemverString := SemverString + '-' + Config.preRelease;
 
   try
-    JSONObject := TJSONObject.Create;
     try
+      JSONObject := TJSONObject.Create;
+
       // Add all fields
       JSONObject.Add('name', VersionInfo.name);
       JSONObject.Add('description', VersionInfo.description);
@@ -269,12 +280,17 @@ begin
       JSONObject.Add('semver', SemverString);
 
       // Write to file
+      FileOpened := False;
       AssignFile(OutputFile, VersionFile);
       Rewrite(OutputFile);
-      WriteLn(OutputFile, JSONObject.FormatJSON);
-      CloseFile(OutputFile);
+      FileOpened := True;
 
+      WriteLn(OutputFile, JSONObject.FormatJSON);
     finally
+      if FileOpened then
+      begin
+        CloseFile(OutputFile);
+      end;
       JSONObject.Free;
     end;
   except
@@ -284,6 +300,7 @@ begin
 end;
 
 begin
+  WriteLn('');
   WriteLn('qlsemver - Semantic Version Generator');
   WriteLn('====================================');
 
@@ -310,6 +327,7 @@ begin
     WriteLn('Version file created: ', Config.qlVersionPath, PathDelim, Config.qlVersionName);
 
     WriteLn('Process completed successfully');
+    WriteLn('');
 
   except
     on E: Exception do
