@@ -87,7 +87,7 @@ QLSEMVER_SCRIPT_DIR := scripts/ql-semver
 PROJECT_DIR := project
 DIAGRAM_SRC_DIR:=ql-diagram
 DIAGRAM_SRC_CODE_DIR:=$(DIAGRAM_SRC_DIR)/ql-code
-DIAGRAM_OUT_DIR:=out
+DIAGRAM_OUT_DIR:=docs/ql-diagram
 DIAGRAM_OUT_CODE_DIR:=$(DIAGRAM_OUT_DIR)/ql-code
 
 

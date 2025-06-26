@@ -287,7 +287,7 @@ rectangle r <<frame>> {
 '         end note
 '         ncTransportGuildRank .l. nTransportGuildRank
 
-      component "[[../ql-code/ql-code_cargoroutestrategycode.png {go to CargoRouteStrategy diagram} CargoRouteStrategy]]" as CargoRouteStrategy
+      component "[[ql-components_main_cargoroutestrategy.png {go to CargoRouteStrategy diagram} CargoRouteStrategy]]" as CargoRouteStrategy
         !$note = "<img:./../../out/ql-code/ql-code_cargoroutestrategycode.png{scale=1}>"
         $qlNoteRel(nCargoRouteStrategy, [CargoRouteStrategy], ".l.", $note)
 '         note as ncCargoRouteStrategy

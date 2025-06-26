@@ -39,19 +39,19 @@ rectangle r <<frame>> {
   usecase UCFilteredContractsListBoard as "View filtered list of contracts
 
 --
-..[[[../ql-components/ql-components_main.png {go to Components Main diagram} FilteredContractsListBoard]]].."
+..[[[ql-components_main.png {go to Components Main diagram} FilteredContractsListBoard]]].."
   usecase (Filtered list of contracts) as UCFilteredContractsList
   usecase UCLoadingUnloadingBoard as "Change the Loading/Unloading Strategy
 
 --
-..[[[../ql-components/ql-components_main.png {go to LoadingUnloadingBoard diagram} LoadingUnloadingBoard]]].."
+..[[[ql-components_main.png {go to LoadingUnloadingBoard diagram} LoadingUnloadingBoard]]].."
 
   usecase (Manage load placement on the grid) as UCCargoGrid
 
   usecase UCChangeStrategy as "Change the game Strategy
 
 --
-..[[[../ql-components/ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]].."
+..[[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]].."
 
 
 
@@ -59,7 +59,7 @@ rectangle r <<frame>> {
   usecase UCContractsEntryBoard as "View chosen contracts from the active list
 
 --
-..[[[../ql-components/ql-components_main.png {go to Components Main diagram} ContractsEntryBoard]]].."
+..[[[ql-components_main.png {go to Components Main diagram} ContractsEntryBoard]]].."
   usecase (Enter the chosen contracts in the active list) as UCContractsEntry
 
 
@@ -68,7 +68,7 @@ rectangle r <<frame>> {
   usecase UCIncomeExpenseStatisticsBoard as "View income and expense statistics
 
 --
-..[[[../ql-components/ql-components_main.png {go to Components Main diagram} IncomeExpenseStatisticsBoard]]].."
+..[[[ql-components_main.png {go to Components Main diagram} IncomeExpenseStatisticsBoard]]].."
 
 
 
@@ -76,7 +76,7 @@ rectangle r <<frame>> {
   usecase UCTimeBoard as "View statistics on time data
 
 --
-..[[[../ql-components/ql-components_main_timeboard.png {go to TimeBoard diagram} TimeBoard]]].."
+..[[[ql-components_main_timeboard.png {go to TimeBoard diagram} TimeBoard]]].."
 
   usecase (Enter new time data) as UCTime
 
@@ -86,7 +86,7 @@ rectangle r <<frame>> {
   usecase UCDataExport as "Export data to a file
 
 --
-..[[[../ql-components/ql-components_main.png {go to Components Main diagram} DataExport]]].."
+..[[[ql-components_main.png {go to Components Main diagram} DataExport]]].."
 
 
 
@@ -94,7 +94,7 @@ rectangle r <<frame>> {
   usecase UCStarMapCargoRouteBoard as "Display trade routes (possible, common or newly defined) in the game map
 
 --
-..[[[../ql-components/ql-components_main.png {go to Components Main diagram} StarMapCargoRouteBoard]]].."
+..[[[ql-components_main.png {go to Components Main diagram} StarMapCargoRouteBoard]]].."
 }
 
 

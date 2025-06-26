@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- QuantumLog Documentation -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="QuantumLog - a space hauling mission management tool for the simulation game Star Citizen - Documentation">
+    <meta name="keywords" content="QuantumLog, Documentation, UML, Diagrams, Star Citizen">
+    <meta name="author" content="Giuseppe Ferri <jfinfoit@gmail.com>">
+    <meta name="copyright" content="Copyright (c) 2025 Giuseppe Ferri">
+    <meta name="license" content="MIT">
+    
+    <!-- Open Graph / Social Media -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="QuantumLog - Documentation">
+    <meta property="og:description" content="QuantumLog - a space hauling mission management tool for the simulation game Star Citizen - Documentation">
+    <meta property="og:url" content="https://github.com/JoeFerri/QuantumLog">
+    <!--<meta property="og:image" content="{{OG_IMAGE_URL}}">-->
+    <meta property="og:site_name" content="QuantumLog">
+    
+    <!-- Twitter Card -->
+    <!--<meta name="twitter:card" content="summary_large_image">-->
+    <meta name="twitter:title" content="QuantumLog - Documentation">
+    <meta name="twitter:description" content="QuantumLog - a space hauling mission management tool for the simulation game Star Citizen - Documentation">
+    <!--<meta name="twitter:image" content="{{TWITTER_IMAGE_URL}}">-->
+    
+    <!-- GitHub Repository -->
+    <meta name="repository" content="https://github.com/JoeFerri/QuantumLog">
+    
+    <!-- Favicon -->
+    <!--<link rel="icon" type="image/x-icon" href="{{FAVICON_PATH}}">-->
+    <!--<link rel="icon" type="image/png" sizes="32x32" href="{{FAVICON_32_PATH}}">-->
+    <!--<link rel="icon" type="image/png" sizes="16x16" href="{{FAVICON_16_PATH}}">-->
+    <!--<link rel="apple-touch-icon" sizes="180x180" href="{{APPLE_TOUCH_ICON_PATH}}">-->
+    
+    <!-- Styles and Scripts -->
+    <link rel="stylesheet" href="style.css">
+    <script src="vendor/imageMapResizer/imageMapResizer.js"></script>
+    
+    <title>QuantumLog - Documentation</title>
+</head>
+<body>
+    <!-- Home page -->
+    <div id="home-page" class="page active">
+        <header>
+            <h1>QuantumLog - Documentation</h1>
+            <p>Select a diagram type to view documentation</p>
+        </header>
+        
+        <main class="diagram-types">
+            <div class="type-card" data-type="usecases">
+                <h2>Use Cases</h2>
+                <p>Use case diagrams</p>
+            </div>
+            <div class="type-card" data-type="components">
+                <h2>Components</h2>
+                <p>Component diagrams</p>
+            </div>
+            <div class="type-card" data-type="code">
+                <h2>Code</h2>
+                <p>Code diagrams</p>
+            </div>
+            <div class="type-card" data-type="wbs">
+                <h2>WBS</h2>
+                <p>Work Breakdown Structure</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Diagram list page -->
+    <div id="list-page" class="page">
+        <header>
+            <button id="back-to-home" class="nav-button">← Home</button>
+            <h1 id="list-title"></h1>
+        </header>
+        
+        <main>
+            <div id="diagram-list" class="diagram-list"></div>
+        </main>
+    </div>
+
+    <!-- Diagram viewer page -->
+    <div id="viewer-page" class="page">
+        <nav class="diagram-nav">
+            <button id="prev-diagram" class="nav-button" disabled>← Previous</button>
+            <button id="home-button" class="nav-button home-center">Home</button>
+            <button id="next-diagram" class="nav-button" disabled>Next →</button>
+        </nav>
+        
+        <main class="diagram-container">
+            <div id="diagram-wrapper">
+                <img id="diagram-image" alt="Diagramma PlantUML" />
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading indicator -->
+    <div id="loading" class="loading hidden">
+        <div class="spinner"></div>
+        <p>Loading...</p>
+    </div>
+
+    <!-- Error message -->
+    <div id="error-message" class="error-message hidden">
+        <p>Error loading content</p>
+        <button id="retry-button" class="nav-button">Try again</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

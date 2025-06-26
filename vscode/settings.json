@@ -1,6 +1,6 @@
 {
   "plantuml.exportSubFolder": false,
-  "plantuml.jar": "vendor\\plantuml\\plantuml.jar",
+  "plantuml.jar": "C:\\workspaces\\GitHub\\QuantumLog\\vendor\\plantuml\\plantuml.jar",
   "plantuml.render": "Local",
   "plantuml.server": "https://www.plantuml.com/plantuml",
   "plantuml.commandArgs": [
@@ -8,5 +8,6 @@
   ],
   "plantuml.exportConcurrency": 5,
   "plantuml.diagramsRoot": "ql-diagram",
-  "plantuml.exportMapFile": true
+  "plantuml.exportMapFile": true,
+  "plantuml.exportOutDir": "docs/ql-diagram"
 }
