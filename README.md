@@ -46,7 +46,10 @@ TODO: the installation method must be decided
 ---
 
 ## Documentation
-TODO: For the documentation see the notes inside the source code or [wiki page](https://github.com/JoeFerri/QuantumLog/wiki)
+Currently, the documentation on the site covers only the technical aspects of planning, design and development.
+Documentation on user use will be produced in the final and testing phase.
+
+For the documentation see the notes inside the source code or [docs page](https://joeferri.github.io/QuantumLog/)
 
 ---
 
