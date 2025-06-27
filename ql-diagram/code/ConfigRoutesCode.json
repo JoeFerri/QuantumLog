@@ -1,0 +1,28 @@
+{
+  "routes": [
+    {
+      "key": "Route_Local",
+      "level": 0,
+      "route": "Local",
+      "route_it": "Zona Attuale"
+    },
+    {
+      "key": "Route_Planetary",
+      "level": 1,
+      "route": "Planetary",
+      "route_it": "Planetario"
+    },
+    {
+      "key": "Route_Solar",
+      "level": 2,
+      "route": "Solar",
+      "route_it": "Nel Sistema Locale"
+    },
+    {
+      "key": "Route_Interstellar",
+      "level": 3,
+      "route": "Interstellar",
+      "route_it": "Interstellare"
+    }
+  ]
+}

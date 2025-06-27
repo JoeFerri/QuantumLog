@@ -30,9 +30,9 @@ class PlantUMLDocs {
                 { filename: 'ql-components_main.png', title: 'Components Main' },
             ],
             'code': [
-                { filename: 'ql-code_cargogradecode.png', title: 'CargoGradeCode' },
-                { filename: 'ql-code_cargoroutestrategycode.png', title: 'CargoRouteStrategyCode' },
-                { filename: 'ql-code_transportguildrankcode.png', title: 'TransportGuildRankCode' }
+                { filename: 'ql-code_configgradescode.png', title: 'ConfigGradesCode' },
+                { filename: 'ql-code_configroutescode.png', title: 'ConfigRoutesCode' },
+                { filename: 'ql-code_configrankscode.png', title: 'ConfigRanksCode' }
             ],
             'wbs': [
                 { filename: 'ql-wbs_artifacts.png', title: 'WBS Artifacts' }

@@ -1,0 +1,28 @@
+{
+  "grades": [
+    {
+      "key": "Grade_ExtraSmall",
+      "level": 0,
+      "grade": "Extra Small",
+      "grade_it": "Extra Piccole"
+    },
+    {
+      "key": "Grade_Small",
+      "level": 1,
+      "grade": "Small",
+      "grade_it": "Piccole"
+    },
+    {
+      "key": "Grade_Supply",
+      "level": 2,
+      "grade": "Medium",
+      "grade_it": "Medie"
+    },
+    {
+      "key": "Grade_Bulk",
+      "level": 3,
+      "grade": "Large",
+      "grade_it": "Grandi"
+    }
+  ]
+}

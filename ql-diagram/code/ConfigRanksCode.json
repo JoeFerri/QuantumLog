@@ -1,0 +1,46 @@
+{
+  "ranks": [
+    {
+      "key": "Rank_0",
+      "level": 0,
+      "rank": "Trainee",
+      "rank_it": "Tirocinante"
+    },
+    {
+      "key": "Rank_1",
+      "level": 1,
+      "rank": "Rookie",
+      "rank_it": "Principiante"
+    },
+    {
+      "key": "Rank_2",
+      "level": 2,
+      "rank": "Junior",
+      "rank_it": "Junior"
+    },
+    {
+      "key": "Rank_3",
+      "level": 3,
+      "rank": "Member",
+      "rank_it": "Membro"
+    },
+    {
+      "key": "Rank_4",
+      "level": 4,
+      "rank": "Experienced",
+      "rank_it": "Esperto"
+    },
+    {
+      "key": "Rank_5",
+      "level": 5,
+      "rank": "Senior",
+      "rank_it": "Senior"
+    },
+    {
+      "key": "Rank_6",
+      "level": 6,
+      "rank": "Master",
+      "rank_it": "Maestro"
+    }
+  ]
+}

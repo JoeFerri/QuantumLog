@@ -12,27 +12,27 @@
 
 
 '
-' CargoGradeCode
+' ConfigGradesCode
 '
 '''_______________________________________________
-@startjson ql-code_cargogradecode
-!include ../code/CargoGradeCode.json
+@startjson ql-code_configgradescode
+!include ../code/ConfigGradesCode.json
 @endjson
 
 
 '
-' TransportGuildRankCode
+' ConfigRanksCode
 '
 '''_______________________________________________
-@startjson ql-code_transportguildrankcode
-!include ../code/TransportGuildRankCode.json
+@startjson ql-code_configrankscode
+!include ../code/ConfigRanksCode.json
 @endjson
 
 
 '
-' CargoRouteStrategyCode
+' ConfigRoutesCode
 '
 '''_______________________________________________
-@startjson ql-code_cargoroutestrategycode
-!include ../code/CargoRouteStrategyCode.json
+@startjson ql-code_configroutescode
+!include ../code/ConfigRoutesCode.json
 @endjson
