@@ -3,27 +3,20 @@
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct-eng.md)
 
 # QuantumLog
-**QuantumLog** is a space hauling mission management tool for the simulation game Star Citizen.
+**QuantumLog** is a transportation mission management tool for space simulation games.
 
 ## Data Sources
 
 QuantumLog relies solely on:
 - Player-submitted data (station locations, mission times, ship information, etc.)
-- Public APIs:
-  - [STARMAP POIS API](https://starmap.space/api/v3/pois/index.php) - Points of Interest data (**not yet used**)
-  - [STARMAP OC API](https://starmap.space/api/v3/oc/index.php) - Outpost and Colony data (**not yet used**)
 
-QuantumLog does not access, read, or modify Star Citizen cache, or memory.
+QuantumLog does not access, read, or modify games cache, or memory.
 
-In no way have the Star Citizen game executable files been examined and/or manipulated for the design and development of QuantumLog.
+In no way have the games executable files been examined and/or manipulated for the design and development of QuantumLog.
 
 ## Legal Disclaimer
 
-This is an unofficial Star Citizen tool, not affiliated with the Cloud Imperium group of companies.
-
 All content not authored by QuantumLog or users are property of their respective owners.
-
-[Star Citizen®](https://robertsspaceindustries.com/en/star-citizen), [Roberts Space Industries®](https://robertsspaceindustries.com) and [Cloud Imperium®](https://cloudimperiumgames.com/) are registered trademarks of **Cloud Imperium Rights LLC**. 
 
 QuantumLog is an independent, open source, and non-profit project.
 

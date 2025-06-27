@@ -76,7 +76,7 @@ rectangle r <<frame>> {
   }
 
   component [IncomeExpenseStatisticsBoard]
-    !$note = "GUI for displaying statistics related to the income/expense account of a game session (freight session). Measured characteristics: aUEC/SCU, Time/aUEC, etc."
+    !$note = "GUI for displaying statistics related to the income/expense account of a game session (freight session). Measured characteristics: Coin/Unit, Time/Coin, etc."
     $qlNoteRel(nIncomeExpenseStatisticsBoard, [IncomeExpenseStatisticsBoard], ".", $note)
 
   component [LoadingUnloadingBoard]
@@ -267,35 +267,35 @@ rectangle r <<frame>> {
         $qlNoteRel(nShipStrategy, [ShipStrategy], ".l.", $note)
 
 
-      component [CargoGrade]
-        !$note = "<img:./../../out/ql-code/ql-code_cargogradecode.png{scale=1}>"
-        $qlNoteRel(nCargoGrade, [CargoGrade], ".l.", $note)
-'         note as ncCargoGrade
+      component [CargoGradeStrategy]
+        !$note = "<img:./../../docs/ql-diagram/ql-code/ql-code_configgradescode.png{scale=1}>"
+        $qlNoteRel(nCargoGradeStrategy, [CargoGradeStrategy], ".l.", $note)
+'         note as ncCargoGradeStrategy
 ' <code>
-'   !include code/CargoGradeCode.json
+'   !include code/ConfigGradesCode.json
 ' </code>
 '         end note
-'         ncCargoGrade .l. nCargoGrade
+'         ncCargoGradeStrategy .l. nCargoGradeStrategy
 
-      component [TransportGuildRank]
-        !$note = "<img:./../../out/ql-code/ql-code_transportguildrankcode.png{scale=1}>"
-        $qlNoteRel(nTransportGuildRank, [TransportGuildRank], ".l.", $note)
-'         note as ncTransportGuildRank
+      component [CargoRankStrategy]
+        !$note = "<img:./../../docs/ql-diagram/ql-code/ql-code_configrankscode.png{scale=1}>"
+        $qlNoteRel(nCargoRankStrategy, [CargoRankStrategy], ".l.", $note)
+'         note as ncCargoRankStrategy
 ' <code>
-'   !include code/TransportGuildRankCode.json
+'   !include code/ConfigRanksCode.json
 ' </code>
 '         end note
-'         ncTransportGuildRank .l. nTransportGuildRank
+'         ncCargoRankStrategy .l. nCargoRankStrategy
 
-      component "[[ql-components_main_cargoroutestrategy.png {go to CargoRouteStrategy diagram} CargoRouteStrategy]]" as CargoRouteStrategy
-        !$note = "<img:./../../out/ql-code/ql-code_cargoroutestrategycode.png{scale=1}>"
-        $qlNoteRel(nCargoRouteStrategy, [CargoRouteStrategy], ".l.", $note)
-'         note as ncCargoRouteStrategy
+      component "[[ql-components_main_routesstrategy.png {go to RoutesStrategy diagram} RoutesStrategy]]" as RoutesStrategy
+        !$note = "<img:./../../docs/ql-diagram/ql-code/ql-code_configroutescode.png{scale=1}>"
+        $qlNoteRel(nRoutesStrategy, [RoutesStrategy], ".l.", $note)
+'         note as ncRoutesStrategy
 ' <code>
-'   !include code/CargoRouteStrategyCode.json
+'   !include code/ConfigRoutesCode.json
 ' </code>
 '         end note
-'         ncCargoRouteStrategy .l. nCargoRouteStrategy
+'         ncRoutesStrategy .l. nRoutesStrategy
   }
 
 }
@@ -304,8 +304,8 @@ rectangle r <<frame>> {
 StartingEndingPoint -[hidden]-> LimitsStrategy
 LimitsStrategy -[hidden]-> ShipStrategy
 
-CargoGrade -[hidden]-> TransportGuildRank
-TransportGuildRank -[hidden]-> CargoRouteStrategy
+CargoGradeStrategy -[hidden]-> CargoRankStrategy
+CargoRankStrategy -[hidden]-> RoutesStrategy
 
 @enduml
 
@@ -330,25 +330,25 @@ rectangle r <<frame>> {
         !$note = "Limits on the type of materials."
         $qlNoteRel(nLimitsMaterial, [LimitsMaterial], ".l.", $note)
 
-      component [LimitsAUec]
-        !$note = "Interval aUec within which to filter the contracts in the list."
-        $qlNoteRel(nLimitsAUec, [LimitsAUec], ".l.", $note)
+      component [LimitsCoin]
+        !$note = "Interval coin within which to filter the contracts in the list."
+        $qlNoteRel(nLimitsCoin, [LimitsCoin], ".l.", $note)
 
       component [LimitsRoute]
         !$note = "Numerosity of loading/unloading stations by session and contract."
         $qlNoteRel(nLimitsRoute, [LimitsRoute], ".l.", $note)
 
-      component [LimitsSCU]
-        !$note = "SCU range within which to filter the contracts in the list. Maximum size of the crates. Numerosity of the crates."
-        $qlNoteRel(nLimitsSCU, [LimitsSCU], ".l.", $note)
+      component [LimitsUnit]
+        !$note = "Unit range within which to filter the contracts in the list. Maximum size of the crates. Numerosity of the crates."
+        $qlNoteRel(nLimitsUnit, [LimitsUnit], ".l.", $note)
   }
 
 }
 
 ' top to bottom direction
-LimitsMaterial -[hidden]-> LimitsAUec
-LimitsAUec -[hidden]-> LimitsRoute
-LimitsRoute -[hidden]-> LimitsSCU
+LimitsMaterial -[hidden]-> LimitsCoin
+LimitsCoin -[hidden]-> LimitsRoute
+LimitsRoute -[hidden]-> LimitsUnit
 
 @enduml
 
@@ -373,9 +373,9 @@ rectangle r <<frame>> {
         !$note = "Selection of ship components."
         $qlNoteRel(nShipOptions, [ShipOptions], ".l.", $note)
 
-      component [CargoGridStrategy]
+      component [GridStrategy]
         !$note = "Choice of loading strategy, i.e., placement of boxes on the grid (choice of algorithm)."
-        $qlNoteRel(nCargoGridStrategy, [CargoGridStrategy], ".l.", $note)
+        $qlNoteRel(nGridStrategy, [GridStrategy], ".l.", $note)
 
       component [ShipDetailsStrategy]
         !$note = "View of the details of the ship influenced by the components."
@@ -385,18 +385,18 @@ rectangle r <<frame>> {
 }
 
 ' top to bottom direction
-ShipOptions -[hidden]-> CargoGridStrategy
-CargoGridStrategy -[hidden]-> ShipDetailsStrategy
+ShipOptions -[hidden]-> GridStrategy
+GridStrategy -[hidden]-> ShipDetailsStrategy
 
 @enduml
 
 
 '
-' CargoRouteStrategy
+' RoutesStrategy
 '
 '''_______________________________________________
-@startuml ql-components_main_cargoroutestrategy
-!$title = "CargoRouteStrategy"
+@startuml ql-components_main_routesstrategy
+!$title = "RoutesStrategy"
 !$rootLink = "[[ql-components_main_strategyboard.png {go to StrategyBoard diagram} StrategyBoard]]"
 !$author = "Giuseppe Ferri"
 
@@ -405,21 +405,21 @@ CargoGridStrategy -[hidden]-> ShipDetailsStrategy
 
 rectangle r <<frame>> {
 
-  component [CargoRouteStrategy] {
+  component [RoutesStrategy] {
 
-      component [CargoRouteSimple]
-        !$note = "Selection from one of the routes specified in the HaulCargo_CargoRoute field (see <b>CargoRouteStrategyCode.json</b>)"
-        $qlNoteRel(nCargoRouteSimple, [CargoRouteSimple], ".l.", $note)
+      component [RoutesSimple]
+        !$note = "Selection from one of the routes specified in the routes field (see <b>ConfigRoutesCode.json</b>)"
+        $qlNoteRel(nRoutesSimple, [RoutesSimple], ".l.", $note)
 
-      component [CargoRouteMore]
+      component [RoutesMore]
         !$note = "More refined filtering of route strategy."
-        $qlNoteRel(nCargoRouteMore, [CargoRouteMore], ".l.", $note)
+        $qlNoteRel(nRoutesMore, [RoutesMore], ".l.", $note)
   }
 
 }
 
 ' top to bottom direction
-CargoRouteSimple -[hidden]-> CargoRouteMore
+RoutesSimple -[hidden]-> RoutesMore
 
 @enduml
 

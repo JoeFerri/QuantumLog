@@ -20,7 +20,7 @@ class PlantUMLDocs {
             ],
             'components': [
                 { filename: 'ql-components_future_features.png', title: 'Components Future Features' },
-                { filename: 'ql-components_main_cargoroutestrategy.png', title: 'CargoRouteStrategy' },
+                { filename: 'ql-components_main_routesstrategy.png', title: 'CargoRouteStrategy' },
                 { filename: 'ql-components_main_limitsstrategy.png', title: 'LimitsStrategy' },
                 { filename: 'ql-components_main_shipstrategy.png', title: 'ShipStrategy' },
                 { filename: 'ql-components_main_starmapcargorouteboard.png', title: 'StarMapCargoRouteBoard' },
@@ -30,9 +30,9 @@ class PlantUMLDocs {
                 { filename: 'ql-components_main.png', title: 'Components Main' },
             ],
             'code': [
-                { filename: 'ql-code_cargogradecode.png', title: 'CargoGradeCode' },
-                { filename: 'ql-code_cargoroutestrategycode.png', title: 'CargoRouteStrategyCode' },
-                { filename: 'ql-code_transportguildrankcode.png', title: 'TransportGuildRankCode' }
+                { filename: 'ql-code_configgradescode.png', title: 'ConfigGradesCode' },
+                { filename: 'ql-code_configroutescode.png', title: 'ConfigRoutesCode' },
+                { filename: 'ql-code_configrankscode.png', title: 'ConfigRanksCode' }
             ],
             'wbs': [
                 { filename: 'ql-wbs_artifacts.png', title: 'WBS Artifacts' }
