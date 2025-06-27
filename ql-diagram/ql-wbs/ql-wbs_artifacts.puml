@@ -30,17 +30,25 @@
 ** automation
 *** scripts
 **** <&flag> qlsemver
-*** Makefile
+*** <&flag> Makefile
 ** diagrams
-*** components
-*** WBS
+*** <&flag> components
+*** <&flag> WBS
+*** <&flag> usecases
 ** docs
-*** roadmap.md
-*** CHANGELOG.md
-*** CONTRIBUTING.md
-*** release_procedure.md
-*** compile_procedure.md
-*** version.json
-*** README.md
+*** project
+**** roadmap.md
+**** CHANGELOG.md
+**** CONTRIBUTING.md
+**** <&flag> LICENSE
+**** release_procedure.md
+**** compile_procedure.md
+**** <&flag> version.json
+**** README.md
+*** documentation
+**** <&flag> github.io/QuantumLog
+***** <&flag> index.html
+***** <&flag> style.css
+***** <&flag> script.js
 
 @endwbs
