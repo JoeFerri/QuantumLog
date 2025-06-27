@@ -20,7 +20,7 @@ class PlantUMLDocs {
             ],
             'components': [
                 { filename: 'ql-components_future_features.png', title: 'Components Future Features' },
-                { filename: 'ql-components_main_cargoroutestrategy.png', title: 'CargoRouteStrategy' },
+                { filename: 'ql-components_main_routesstrategy.png', title: 'CargoRouteStrategy' },
                 { filename: 'ql-components_main_limitsstrategy.png', title: 'LimitsStrategy' },
                 { filename: 'ql-components_main_shipstrategy.png', title: 'ShipStrategy' },
                 { filename: 'ql-components_main_starmapcargorouteboard.png', title: 'StarMapCargoRouteBoard' },
