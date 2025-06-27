@@ -380,13 +380,21 @@ class PlantUMLDocs {
             });
         }
 
-        if (showFlag) {
+        if (type != this.currentType) {
             try {
                 await this.loadDiagramListByType(type);
-                await this.showDiagram(targetIndex);
             } catch (error) {
                 console.error(`Error loading list for type: ${type}`);
                 this.showError(`Error loading diagrams list for type: ${type}`);
+            }
+        }
+
+        if (showFlag) {
+            try {
+                await this.showDiagram(targetIndex);
+            } catch (error) {
+                console.error(`Error loading diagram: ${filename}`);
+                this.showError(`Error loading diagram: ${filename}`);
             }
         }
     }
